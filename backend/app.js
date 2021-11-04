@@ -16,18 +16,17 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.json());
-// Security Middleware
+//only use cors in development
 if (!isProduction) {
-  // cors only in development
   app.use(cors());
 }
-// helmet helps set a variety of headers to better secure your app
+//helmet is a security app
 app.use(
   helmet({
     contentSecurityPolicy: false,
   })
 );
-// Set the _csrf token and create req.csrfToken method
+//Setting the csrf token
 app.use(
   csurf({
     cookie: {
@@ -47,8 +46,8 @@ app.use((_req, _res, next) => {
   err.status = 404;
   next(err);
 });
+//sequelize error handler
 app.use((err, _req, _res, next) => {
-  // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
     err.errors = err.errors.map((e) => e.message);
     err.title = "Validation error";
