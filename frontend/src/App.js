@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 function App() {
   return (
     <div>
+      <nav className="nav-bar">Nav-Bar</nav>
       <Switch>
         <Route path="/login">
           <LoginFormPage />
