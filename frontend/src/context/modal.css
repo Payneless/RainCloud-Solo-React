@@ -1,0 +1,23 @@
+#modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-background {
+  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+#modal-content {
+  position: absolute;
+  background-color: white;
+}

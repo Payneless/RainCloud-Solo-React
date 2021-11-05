@@ -3,4 +3,13 @@
   background-color: lightskyblue;
   display: flex;
   justify-content: center;
+  width: auto;
+}
+.nav-tools {
+  list-style-type: none;
+  width: 100%;
+}
+.logo {
+  text-decoration: none;
+  font-family: "Merienda", cursive;
 }
