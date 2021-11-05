@@ -16,6 +16,8 @@
 .nav-bar {
   min-height: fit-content;
   background-color: lightskyblue;
+  display: flex;
+  justify-content: center;
 }
 .log-in {
   display: flex;
@@ -52,4 +54,10 @@
   position: relative;
   border-radius: 0.25rem;
   border: 0;
+}
+.errors-list {
+  display: flex;
+  background-color: rgb(243, 97, 13);
+  border-radius: 0.15rem;
+  justify-content: left;
 }

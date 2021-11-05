@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div>
-      <nav className="nav-bar">Nav-Bar</nav>
+      <nav className="nav-bar">Rain Cloud</nav>
       <Switch>
         <Route path="/login">
           <LoginFormPage />
