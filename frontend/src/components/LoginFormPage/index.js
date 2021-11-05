@@ -30,12 +30,12 @@ const LoginFormPage = () => {
   return (
     <div className="form-page">
       <h2>Log In</h2>
+      <ul className="errors-list">
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>
       <form className="log-in" onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
         <label className="username-input">
           Username:
           <input
