@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormModal";
+import LoginForm from "./components/LoginFormPage";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/session";
 import SignupFormPage from "./components/SignUpFormPage";
@@ -14,18 +14,24 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
-      <nav className="nav-bar">
-        <Navigation isLoaded={isLoaded} />
-        {isLoaded && (
-          <Switch>
-            <Route path="/signup">
-              <SignupFormPage />
-            </Route>
-          </Switch>
-        )}
-      </nav>
-    </div>
+    isLoaded && (
+      <div>
+        <nav className="nav-bar">
+          <Navigation isLoaded={isLoaded} />
+        </nav>
+        <div className="wrapper">
+          <div className="sidebar"></div>
+          <div className="maincontent">
+            <Switch>
+              <Route path="/signup">
+                <SignupFormPage />
+              </Route>
+            </Switch>
+          </div>
+          <div className="sidebar"></div>
+        </div>
+      </div>
+    )
   );
 }
 export default App;
