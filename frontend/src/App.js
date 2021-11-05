@@ -4,6 +4,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/session";
 import SignupFormPage from "./components/SignUpFormPage";
+import Navigation from "./components/Navigation";
 
 function App() {
   const dispatch = useDispatch();
@@ -14,15 +15,19 @@ function App() {
 
   return (
     <div>
-      <nav className="nav-bar">Rain Cloud</nav>
-      <Switch>
-        <Route path="/login">
-          <LoginFormPage />
-        </Route>
-        <Route path="/signup">
-          <SignupFormPage />
-        </Route>
-      </Switch>
+      <nav className="nav-bar">
+        <Navigation isLoaded={isLoaded} />
+        {isLoaded && (
+          <Switch>
+            <Route path="/login">
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+          </Switch>
+        )}
+      </nav>
     </div>
   );
 }

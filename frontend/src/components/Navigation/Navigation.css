@@ -1,0 +1,6 @@
+.nav-bar {
+  min-height: fit-content;
+  background-color: lightskyblue;
+  display: flex;
+  justify-content: center;
+}
