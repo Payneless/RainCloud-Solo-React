@@ -36,7 +36,7 @@ const LoginFormPage = () => {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
+        <label className="username-input">
           Username:
           <input
             type="text"
@@ -45,7 +45,7 @@ const LoginFormPage = () => {
             required
           />
         </label>
-        <label>
+        <label className="password-input">
           Password:
           <input
             type="password"
@@ -54,7 +54,9 @@ const LoginFormPage = () => {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit" className="login-button">
+          Log In
+        </button>
       </form>
     </div>
   );
