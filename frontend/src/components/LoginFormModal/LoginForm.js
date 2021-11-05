@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
-const LoginFormPage = () => {
+const LoginForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -62,4 +62,4 @@ const LoginFormPage = () => {
   );
 };
 
-export default LoginFormPage;
+export default LoginForm;

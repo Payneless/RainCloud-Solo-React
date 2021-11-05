@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import ReactDOM from "react-dom";
 
+import { ModalProvider } from "./context/modal";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { restoreCSRF, csrfFetch } from "./store/csrf.js";
@@ -23,9 +24,11 @@ if (process.env.NODE_ENV !== "production") {
 function Root() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ModalProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ModalProvider>
     </Provider>
   );
 }
