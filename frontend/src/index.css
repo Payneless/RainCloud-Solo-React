@@ -7,6 +7,10 @@
     background-position: 100% 0;
   }
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
 .form-page {
   display: flex;
