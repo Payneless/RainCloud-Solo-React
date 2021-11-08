@@ -8,9 +8,14 @@ const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
 
 router.get(
-  "/sounds",
+  "/",
   asyncHandler(async (req, res) => {
-    const sounds = Sound.get();
-    return res.json({ sounds });
+    // const sounds = Sound.get();
+    const sounds = await Sound.findAll();
+    console.log(sounds);
+    console.log(JSON.stringify(sounds));
+    res.json(sounds);
   })
 );
+
+module.exports = router;

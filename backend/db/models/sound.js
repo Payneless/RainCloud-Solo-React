@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     Sound.belongsTo(models.Playlist, {
       foreignKey: "playlistId",
     });
-    Sound.haveMany(models.Comment, {
+    Sound.hasMany(models.Comment, {
       foreignKey: "soundId",
     });
   };
