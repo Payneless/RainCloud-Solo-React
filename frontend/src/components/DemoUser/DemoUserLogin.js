@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 
 const DemoUserLogin = () => {
   const sessionUser = useSelector((state) => state.session.user);
-  const [credential, setCredential] = useState("Demo-lition");
+  const [credential, setCredential] = useState("Demo");
   const [password, setPassword] = useState("password");
   const history = useHistory();
   const dispatch = useDispatch();

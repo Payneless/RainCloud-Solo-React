@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/session";
 import SignupFormPage from "./components/SignUpFormPage";
 import Navigation from "./components/Navigation";
+import Sounds from "./components/sounds/sounds";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
             <Switch>
               <Route path="/signup">
                 <SignupFormPage />
+              </Route>
+              <Route path="/sounds">
+                <Sounds />
               </Route>
             </Switch>
           </div>
