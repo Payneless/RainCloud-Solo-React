@@ -10,7 +10,7 @@
 }
 
 #modal-background {
-  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 0;
   right: 0;
@@ -19,5 +19,4 @@
 }
 #modal-content {
   position: absolute;
-  background-color: white;
 }

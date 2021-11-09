@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Sound.prototype.get = async function () {
-    return await Sound.findAll();
-  };
+  // Sound.prototype.get = async function () {
+  //   return await Sound.findAll();
+  // };
   Sound.associate = function (models) {
     Sound.belongsTo(models.User, {
       foreignKey: "userId",

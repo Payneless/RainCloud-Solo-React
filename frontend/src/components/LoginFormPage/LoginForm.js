@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import "./loginform.css";
 
 const LoginForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -29,7 +30,7 @@ const LoginForm = () => {
   };
   return (
     <div className="form-page">
-      <h2>Log In</h2>
+      <h2></h2>
       <ul className="errors-list">
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>

@@ -20,6 +20,15 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "Rain-6",
+          content: "General rain sound.",
+          userId: 1,
+          playlistId: 1,
+          file: "https://res.cloudinary.com/rain-cloud/video/upload/v1636405555/Sounds/rain-06_af6nye.mp3",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

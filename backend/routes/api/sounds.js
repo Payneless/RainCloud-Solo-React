@@ -10,12 +10,17 @@ const router = express.Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    // const sounds = Sound.get();
     const sounds = await Sound.findAll();
-    console.log(sounds);
-    console.log(JSON.stringify(sounds));
+    console.log();
     res.json(sounds);
   })
 );
+
+// router.post(
+//   "/",
+//   asyncHandler(async (req, res) => {
+//     const newSound = await Sound.create();
+//   })
+// );
 
 module.exports = router;

@@ -1,0 +1,47 @@
+.form-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 0.2rem gray;
+  border-radius: 5%;
+  padding: 1rem;
+  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  background-position: bottom;
+}
+.input {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(141, 202, 226);
+}
+.password-input {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(141, 202, 226);
+}
+.signup-button {
+  margin: 0.5rem;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  place-items: center;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.25rem;
+  border: 0;
+}
+.errors-list {
+  display: flex;
+  background-color: rgb(243, 97, 13);
+  border-radius: 0.15rem;
+  justify-content: left;
+}

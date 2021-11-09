@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { getAllSounds } from "../../store/sounds";
-import SoundDetail from "./soundsDetails";
+import MediaPlayer from "./mediaPlayer";
+import { Modal } from "../../context/modal";
 
 const Sounds = () => {
   const dispatch = useDispatch();
-  const sounds = useSelector((state) => state.sound);
+  const sounds = useSelector((state) => Object.values(state.sounds));
+  console.log("this is sounds", sounds);
   useEffect(() => {
     dispatch(getAllSounds());
   }, [dispatch]);
@@ -16,15 +18,7 @@ const Sounds = () => {
     <div>
       <div className="sounds">
         {sounds?.map(({ id, name, content, userId, playlistId, file }) => (
-          <SoundDetail
-            key={id}
-            id={id}
-            name={name}
-            content={content}
-            userId={userId}
-            playlistId={playlistId}
-            file={file}
-          />
+          <MediaPlayer file={file} name={name} />
         ))}
       </div>
     </div>
