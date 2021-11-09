@@ -45,8 +45,20 @@ router.post(
         playlistId,
         file,
       });
+      return res.json({ newSound });
+    } else {
+      let errors = soundErrors.array().map((error) => error.msg);
+      res.json({ errors });
     }
-    return res.json({ newSound });
+  })
+);
+
+router.get(
+  ":id(\\d+",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const sound = await Sound.findByPk(id);
+    const soundUserId = sound.userId;
   })
 );
 
