@@ -58,7 +58,6 @@ const MediaPlayer = ({ file, name }) => {
   const mediaElement = useRef(null);
   const dispatch = useDispatch();
   const sounds = useSelector((state) => Object.values(state.sounds));
-  console.log("this is sounds", sounds);
   useEffect(() => {
     dispatch(getAllSounds());
   }, [dispatch]);
