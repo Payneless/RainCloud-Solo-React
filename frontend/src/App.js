@@ -24,9 +24,6 @@ function App() {
           <div className="sidebar"></div>
           <div className="maincontent">
             <Switch>
-              <Route path="/signup">
-                <SignupFormPage />
-              </Route>
               <Route path="/sounds">
                 <Sounds />
               </Route>
