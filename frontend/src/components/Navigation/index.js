@@ -11,7 +11,11 @@ const Navigation = ({ isLoaded }) => {
 
   let sessionButtons;
   if (sessionUser) {
-    sessionButtons = <ProfileButton user={sessionUser} />;
+    sessionButtons = (
+      <div>
+        <ProfileButton user={sessionUser} /> Welcome, {sessionUser.username}!
+      </div>
+    );
   } else {
     sessionButtons = (
       <>

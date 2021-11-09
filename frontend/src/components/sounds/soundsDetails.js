@@ -14,9 +14,9 @@ export const useMediaPlayer = (mediaElement) => {
     setPlayerState({ ...playerState, isPlaying: !playerState.isPlaying });
   };
 
-  useEffect(() => {
-    playerState.isPlaying;
-  });
+  // useEffect(() => {
+  //   playerState.isPlaying;
+  // });
 };
 
 const SoundDetail = ({ id, name, content, userId, playlistId, file }) => {
