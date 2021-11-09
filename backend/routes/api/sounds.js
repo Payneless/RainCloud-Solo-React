@@ -25,7 +25,6 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const sounds = await Sound.findAll();
-    console.log();
     res.json(sounds);
   })
 );
@@ -53,13 +52,11 @@ router.post(
   })
 );
 
-router.get(
-  ":id(\\d+",
+router.get(":id(\\d+)"),
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const sound = await Sound.findByPk(id);
     const soundUserId = sound.userId;
-  })
-);
+  });
 
 module.exports = router;

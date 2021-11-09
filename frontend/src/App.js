@@ -12,13 +12,10 @@ import useMediaPlayer from "./components/sounds/mediaPlayer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const mediaElement = useRef(null);
-  const { playerState, play, handleProgress, handleMediaProgress, toggleMute } =
-    useMediaPlayer(mediaElement);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
+  //test
   return (
     isLoaded && (
       <div>

@@ -30,7 +30,6 @@ const LoginForm = () => {
   };
   return (
     <div className="form-page">
-      <h2></h2>
       <ul className="errors-list">
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>

@@ -12,7 +12,6 @@ export const getAllSounds = () => async (dispatch) => {
   const response = await csrfFetch("/api/sounds");
   if (response.ok) {
     const data = await response.json();
-    console.log("data", data);
     dispatch(getSounds(data));
   }
 };
