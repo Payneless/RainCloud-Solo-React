@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { getAllSounds } from "../../store/sounds";
 import MediaPlayer from "./mediaPlayer";
+import { Modal } from "../../context/modal";
 
 const Sounds = () => {
   const dispatch = useDispatch();
@@ -17,11 +18,7 @@ const Sounds = () => {
     <div>
       <div className="sounds">
         {sounds?.map(({ id, name, content, userId, playlistId, file }) => (
-          <div>
-            <MediaPlayer file={file} name={name} />
-          </div>
-          // <SoundDetail
-          // />
+          <MediaPlayer file={file} name={name} />
         ))}
       </div>
     </div>

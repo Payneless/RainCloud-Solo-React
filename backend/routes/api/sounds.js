@@ -11,9 +11,16 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const sounds = await Sound.findAll();
-		console.log()
+    console.log();
     res.json(sounds);
   })
 );
+
+// router.post(
+//   "/",
+//   asyncHandler(async (req, res) => {
+//     const newSound = await Sound.create();
+//   })
+// );
 
 module.exports = router;
