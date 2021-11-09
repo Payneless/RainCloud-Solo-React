@@ -10,10 +10,9 @@ const getSounds = (payload) => {
 
 export const getAllSounds = () => async (dispatch) => {
   const response = await csrfFetch("/api/sounds");
-  console.log("the response", response);
   if (response.ok) {
     const data = await response.json();
-    console.log("thisisdata", data);
+    console.log("data", data);
     dispatch(getSounds(data));
   }
 };
