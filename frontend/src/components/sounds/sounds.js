@@ -17,15 +17,9 @@ const Sounds = () => {
     <div>
       <div className="sounds">
         {sounds?.map(({ id, name, content, userId, playlistId, file }) => (
-          <SoundDetail
-            key={id}
-            id={id}
-            name={name}
-            content={content}
-            userId={userId}
-            playlistId={playlistId}
-            file={file}
-          />
+          <div>{file}</div>
+          // <SoundDetail
+          // />
         ))}
       </div>
     </div>

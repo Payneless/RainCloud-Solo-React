@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import SignupFormPage from "./components/SignUpFormPage";
 import Navigation from "./components/Navigation";
 import Sounds from "./components/sounds/sounds";
+import Homepage from "./components/homepage/index";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,8 +25,8 @@ function App() {
           <div className="sidebar"></div>
           <div className="maincontent">
             <Switch>
-              <Route path="/sounds">
-                <Sounds />
+              <Route path="/">
+                <Homepage />
               </Route>
             </Switch>
           </div>
