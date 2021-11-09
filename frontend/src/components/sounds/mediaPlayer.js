@@ -14,11 +14,11 @@ export const useMediaPlayer = (mediaElement) => {
     setPlayerState({ ...playerState, isPlaying: !playerState.isPlaying });
   };
 
-  useEffect(() => {
-    playerState.isPlaying
-      ? mediaElement.current.play()
-      : mediaElement.current.pause();
-  }, [playerState.isPlaying, mediaElement]);
+  // useEffect(() => {
+  //   playerState.isPlaying
+  //     ? mediaElement.current.play()
+  //     : mediaElement.current.pause();
+  // }, [playerState.isPlaying, mediaElement]);
 
   const handleProgress = () => {
     const progress =
@@ -40,11 +40,11 @@ export const useMediaPlayer = (mediaElement) => {
     });
   };
 
-  useEffect(() => {
-    playerState.isMuted
-      ? (mediaElement.current.muted = true)
-      : (mediaElement.current.muted = false);
-  }, [playerState.isMuted, mediaElement]);
+  // useEffect(() => {
+  //   playerState.isMuted
+  //     ? (mediaElement.current.muted = true)
+  //     : (mediaElement.current.muted = false);
+  // }, [playerState.isMuted, mediaElement]);
 
   return {
     playerState,
@@ -54,7 +54,7 @@ export const useMediaPlayer = (mediaElement) => {
     toggleMute,
   };
 };
-const MediaPlayer = () => {
+const MediaPlayer = ({ file, name }) => {
   const mediaElement = useRef(null);
   const dispatch = useDispatch();
   const sounds = useSelector((state) => Object.values(state.sounds));
@@ -70,12 +70,10 @@ const MediaPlayer = () => {
   return (
     <div className="media-container">
       <div className="playable-sounds">
-        {sounds?.map(({ id, name, content, userId, playlistId, file }) => (
-          <div>
-            <media src={file} ref={mediaElement} progress={handleProgress} />
-            {name}
-          </div>
-        ))}
+        <div onClick={play}>
+          <media src={file} ref={mediaElement} progress={handleProgress} />
+          {name}
+        </div>
       </div>
     </div>
   );

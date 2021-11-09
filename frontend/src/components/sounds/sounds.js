@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { getAllSounds } from "../../store/sounds";
-import SoundDetail from "./mediaPlayer";
+import MediaPlayer from "./mediaPlayer";
 
 const Sounds = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,9 @@ const Sounds = () => {
     <div>
       <div className="sounds">
         {sounds?.map(({ id, name, content, userId, playlistId, file }) => (
-          <div>{name}</div>
+          <div>
+            <MediaPlayer file={file} name={name} />
+          </div>
           // <SoundDetail
           // />
         ))}
