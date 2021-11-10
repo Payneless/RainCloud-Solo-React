@@ -36,9 +36,7 @@ const validateSound = [
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const sounds = await Sound.findAll(
-      {include: User}
-    );
+    const sounds = await Sound.findAll({ include: User });
     res.json(sounds);
   })
 );
@@ -66,10 +64,11 @@ router.post(
   })
 );
 
-router.delete(":id(\\d+)", async (req, res, next) => {
+router.delete("/:id(\\d+)", async (req, res, next) => {
+  console.log("backend");
   const sound = await Sound.findByPk(req.params.id);
   if (sound) {
-    await sound.destory();
+    await sound.destroy();
     res.statusMessage(204).end();
   } else {
     next(soundNotFoundError(req.params.id));

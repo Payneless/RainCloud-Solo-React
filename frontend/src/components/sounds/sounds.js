@@ -18,14 +18,12 @@ const Sounds = () => {
   return (
     <div>
       <div className="sounds">
-        {sounds?.map(
-          ({ id, name, content, userId, playlistId, file, User }) => (
-            <div>
-              <MediaPlayer file={file} name={name} />
-              {sessionUser?.id === User?.id && <DeleteButton id={id} />}
-            </div>
-          )
-        )}
+        {sounds?.map(({ id, name, content, playlistId, file, User }) => (
+          <div>
+            <MediaPlayer file={file} name={name} />
+            {sessionUser?.id === User?.id && <DeleteButton id={id} />}
+          </div>
+        ))}
       </div>
     </div>
   );
