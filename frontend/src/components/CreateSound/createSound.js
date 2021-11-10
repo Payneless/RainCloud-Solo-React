@@ -22,13 +22,10 @@ const CreateSound = () => {
       playlistId,
       file,
     };
-    dispatch(addASound(payload));
     return dispatch(addASound(payload)).catch(async (res) => {
       const soundData = await res.json();
       if (soundData && soundData.errors) setErrors(soundData.errors);
     });
-
-    history.push("/");
   };
 
   return (
