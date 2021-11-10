@@ -5,6 +5,7 @@ import "./Navigation.css";
 import LoginFormModal from "../LoginFormPage/index";
 import DemoUserLogin from "../DemoUser/DemoUserLogin";
 import SignUpFormPageModal from "../SignUpFormPage/index";
+import AddSound from "../CreateSound/index";
 
 const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -14,6 +15,7 @@ const Navigation = ({ isLoaded }) => {
     sessionButtons = (
       <div>
         <ProfileButton user={sessionUser} /> Welcome, {sessionUser.username}!
+        <AddSound />
       </div>
     );
   } else {

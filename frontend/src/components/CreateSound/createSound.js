@@ -18,6 +18,7 @@ const CreateSound = () => {
       name,
       content,
       userId,
+      playlistId,
       file,
     };
     dispatch(addASound(payload));
@@ -39,7 +40,17 @@ const CreateSound = () => {
           value={content}
           placeholder="Content"
         />
+        <input
+          onChange={(e) => setFile(e.target.value)}
+          value={file}
+          placeholder="file.mp3"
+        />
+        <button className="submit-button" type="submit">
+          Add Sound
+        </button>
       </form>
     </div>
   );
 };
+
+export default CreateSound;
