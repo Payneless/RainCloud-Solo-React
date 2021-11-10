@@ -6,6 +6,14 @@ const { User, Sound } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 
 const router = express.Router();
+
+const soundNotFoundError = (id) => {
+  const err = Error("Sound not found");
+  err.errors = [`Sound with id of ${id} could not be found.`];
+  err.title = "Sound not found.";
+  err.status = 404;
+  return err;
+};
 //validations
 const validateSound = [
   check("name")
@@ -55,6 +63,16 @@ router.post(
     }
   })
 );
+
+router.delete(":id(\\d+)", async (req, res, next) => {
+  const sound = await Sound.findByPk(req.params.id);
+  if (sound) {
+    await sound.destory();
+    res.statusMessage(204).end();
+  } else {
+    next(soundNotFoundError(req.params.id));
+  }
+});
 
 router.get(":id(\\d+)"),
   asyncHandler(async (req, res) => {
