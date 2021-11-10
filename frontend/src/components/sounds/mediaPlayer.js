@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getAllSounds } from "../../store/sounds";
 import AudioPlayer from "react-h5-audio-player";
 import "./mediaplayer.css";
+import "react-h5-audio-player/lib/styles.css";
 
 const MediaPlayer = ({ file, name }) => {
   const dispatch = useDispatch();
@@ -15,10 +16,13 @@ const MediaPlayer = ({ file, name }) => {
   // };
   return (
     <div className="media-container">
-      <div>
-        <AudioPlayer src={file} />
-        {name}
-      </div>
+      <AudioPlayer
+        src={file}
+        showFilledVolume={true}
+        showJumpControls={false}
+        autoPlay={false}
+      />
+      {name}
     </div>
   );
 };

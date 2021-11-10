@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 const GET_SOUNDS = "/sounds/getSounds";
 const ADD_SOUND = "/sounds/addSound";
+const REMOVE_ONE_SOUND = "sounds/removeOneSound";
 
 const getSounds = (payload) => {
   return {
@@ -14,6 +15,10 @@ const addSound = (payload) => {
     type: ADD_SOUND,
     payload,
   };
+};
+
+const removeOneSound = (id) => {
+  return { type: REMOVE_ONE_SOUND, payload: id };
 };
 
 export const getAllSounds = () => async (dispatch) => {
@@ -37,15 +42,28 @@ export const addASound = (sound) => async (dispatch) => {
   }
 };
 
+export const deleteSound = (id) => async (dispatch) => {
+  const response = await csrfFetch(`api/sounds/${id}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    dispatch(removeOneSound(id));
+  }
+};
+
 const soundsReducer = (state = {}, action) => {
   let newState = {};
   switch (action.type) {
     case GET_SOUNDS:
-      newState = { ...state };
       action.payload.forEach((sound) => (newState[sound.id] = sound));
       return newState;
     case ADD_SOUND:
       newState = { ...state, [action.payload.id]: action.payload };
+      return newState;
+    case REMOVE_ONE_SOUND:
+      newState = { ...state };
+      delete newState[action.payload];
       return newState;
     default:
       return state;

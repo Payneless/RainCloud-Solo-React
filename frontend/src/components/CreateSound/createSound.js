@@ -9,6 +9,7 @@ const CreateSound = () => {
   const [content, setContent] = useState("");
   const [playlistId, setPlaylistId] = useState(1);
   const [file, setFile] = useState("");
+  const [errors, setErrors] = useState([]);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -22,6 +23,10 @@ const CreateSound = () => {
       file,
     };
     dispatch(addASound(payload));
+    return dispatch(addASound(payload)).catch(async (res) => {
+      const soundData = await res.json();
+      if (soundData && soundData.errors) setErrors(soundData.errors);
+    });
 
     history.push("/");
   };
@@ -30,6 +35,11 @@ const CreateSound = () => {
     <div className="add-sound">
       <h3>Add A Sound</h3>
       <form onSubmit={handleSubmit} className="add-sound-form">
+        <ul className="errors-list">
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
         <input
           onChange={(e) => setName(e.target.value)}
           value={name}

@@ -1,22 +1,11 @@
 .media-container {
-  height: 15%;
-  width: 18rem;
-}
-.rhap_controls-section {
+  height: 20%;
+  width: auto;
   display: flex;
-  flex-direction: row;
 }
 .sounds {
   display: flex;
-  flex-direction: row;
-  width: 20rem;
-}
-.rhap_additional-controls {
-  width: fit-content;
-}
-.rhap_main-controls {
-  width: fit-content;
-}
-.rhap_volume-controls {
-  width: fit-content;
+  flex-direction: column;
+  width: 30rem;
+  overflow-y: scroll;
 }
