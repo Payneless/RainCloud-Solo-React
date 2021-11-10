@@ -9,16 +9,20 @@ const router = express.Router();
 //validations
 const validateSound = [
   check("name")
+    .exists({ checkFalsy: true })
     .not()
     .isEmpty()
     .withMessage("Please provide a name for your sound."),
   check("content")
+    .exists({ checkFalsy: true })
     .not()
     .isEmpty()
     .withMessage("Please provide a description for your sound."),
   check("file")
+    .exists({ checkFalsy: true })
     .isURL()
     .withMessage("Please provide a url where your file is uploaded."),
+  handleValidationErrors,
 ];
 
 router.get(
@@ -47,7 +51,7 @@ router.post(
       return res.json({ newSound });
     } else {
       let errors = soundErrors.array().map((error) => error.msg);
-      res.json({ errors });
+      return res.json({ errors });
     }
   })
 );

@@ -41,7 +41,6 @@ const soundsReducer = (state = {}, action) => {
   let newState = {};
   switch (action.type) {
     case GET_SOUNDS:
-      newState = { ...state };
       action.payload.forEach((sound) => (newState[sound.id] = sound));
       return newState;
     case ADD_SOUND:
