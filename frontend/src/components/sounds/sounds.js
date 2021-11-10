@@ -5,8 +5,10 @@ import * as sessionActions from "../../store/session";
 import { getAllSounds } from "../../store/sounds";
 import MediaPlayer from "./mediaPlayer";
 import { Modal } from "../../context/modal";
+import DeleteButton from "./deleteButton";
 
 const Sounds = () => {
+  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const sounds = useSelector((state) => Object.values(state.sounds));
   useEffect(() => {
@@ -16,9 +18,14 @@ const Sounds = () => {
   return (
     <div>
       <div className="sounds">
-        {sounds?.map(({ id, name, content, userId, playlistId, file }) => (
-          <MediaPlayer file={file} name={name} />
-        ))}
+        {sounds?.map(
+          ({ id, name, content, userId, playlistId, file, User }) => (
+            <div>
+              <MediaPlayer file={file} name={name} />
+              {sessionUser?.id === User?.id && <DeleteButton id={id} />}
+            </div>
+          )
+        )}
       </div>
     </div>
   );
