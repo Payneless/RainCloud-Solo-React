@@ -15,20 +15,15 @@ const Sounds = () => {
   }, [dispatch]);
 
   const getNewRandomColor = (id) => {
-    let colorArray = [
-      "aqua",
-      "aquamarine",
-      "coral",
-      "cornsilk",
-      "gold",
-      "lavender",
-      "lightcoral",
-      "palegreen",
-      "palevioletred",
-      "peachpuff",
-    ];
-    let randColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-    return randColor;
+    return (
+      "hsl(" +
+      360 * Math.random() +
+      "," +
+      (25 + 70 * Math.random()) +
+      "%," +
+      (85 + 10 * Math.random()) +
+      "%)"
+    );
   };
 
   return (
@@ -38,7 +33,11 @@ const Sounds = () => {
           <li
             key={id}
             className={`media-${id}`}
-            style={{ backgroundColor: getNewRandomColor(id), margin: "2rem" }}
+            style={{
+              backgroundColor: getNewRandomColor(id),
+              margin: "2rem",
+              listStyleType: "none",
+            }}
           >
             <MediaPlayer file={file} name={name} />
             {sessionUser?.id === User?.id && (

@@ -22,24 +22,27 @@ const CreateSound = ({ showModal }) => {
       playlistId,
       file,
     };
+    let errs;
     await dispatch(addASound(payload)).catch(async (res) => {
       const soundData = await res.json();
+      console.log("data", soundData.errors);
       if (soundData && soundData.errors) setErrors(soundData.errors);
+      errs = soundData.errors;
     });
-    if (!errors) {
+    if (!errs) {
       showModal(false);
     }
   };
 
   return (
     <div className="add-sound">
-      <h3>Add A Sound</h3>
       <form onSubmit={handleSubmit} className="add-sound-form">
         <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <h3>Add a Sound</h3>
         <input
           onChange={(e) => setName(e.target.value)}
           value={name}

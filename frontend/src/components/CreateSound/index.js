@@ -5,8 +5,8 @@ import CreateSound from "./createSound";
 const AddSound = () => {
   const [showModal, setShowModal] = useState(false);
   const handleModalClose = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
   return (
     <>
       <button onClick={() => setShowModal(true)}>Add A Sound</button>
