@@ -50,11 +50,11 @@ export const addASound = (sound) => async (dispatch) => {
   }
 };
 
-export const updateOneSound = (sound) => async (dispatch) => {
-  const response = await csrfFetch("/api/sounds", {
+export const updateOneSound = (payload, id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/sounds/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(sound),
+    body: JSON.stringify(payload),
   });
 
   if (response.ok) {
@@ -80,6 +80,9 @@ const soundsReducer = (state = {}, action) => {
       action.payload.forEach((sound) => (newState[sound.id] = sound));
       return newState;
     case ADD_SOUND:
+      newState = { ...state, [action.payload.id]: action.payload };
+      return newState;
+    case UPDATE_ONE_SOUND:
       newState = { ...state, [action.payload.id]: action.payload };
       return newState;
     case REMOVE_ONE_SOUND:
