@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { getAllSounds } from "../../store/sounds";
 import AudioPlayer from "react-h5-audio-player";
 import "./mediaplayer.css";
-import "react-h5-audio-player/lib/styles.css";
 
 const MediaPlayer = ({ file, name }) => {
   const dispatch = useDispatch();
