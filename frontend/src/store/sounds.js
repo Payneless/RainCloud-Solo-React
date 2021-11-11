@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 const GET_SOUNDS = "/sounds/getSounds";
 const ADD_SOUND = "/sounds/addSound";
 const REMOVE_ONE_SOUND = "sounds/removeOneSound";
+const UPDATE_ONE_SOUND = "sounds/updateOneSound";
 
 const getSounds = (payload) => {
   return {
@@ -13,6 +14,13 @@ const getSounds = (payload) => {
 const addSound = (payload) => {
   return {
     type: ADD_SOUND,
+    payload,
+  };
+};
+
+const updateSound = (payload) => {
+  return {
+    type: UPDATE_ONE_SOUND,
     payload,
   };
 };
@@ -32,13 +40,26 @@ export const getAllSounds = () => async (dispatch) => {
 export const addASound = (sound) => async (dispatch) => {
   const response = await csrfFetch("/api/sounds", {
     method: "POST",
-    headerS: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(sound),
   });
 
   if (response.ok) {
     const data = await response.json();
     dispatch(addSound(data));
+  }
+};
+
+export const updateOneSound = (sound) => async (dispatch) => {
+  const response = await csrfFetch("/api/sounds", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(sound),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateSound(data));
   }
 };
 

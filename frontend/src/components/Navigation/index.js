@@ -29,7 +29,7 @@ const Navigation = ({ isLoaded }) => {
   }
   return (
     <ul>
-      <li className="nav-tools">
+      <li key="nav-bar" className="nav-tools">
         <NavLink exact to="/" className="logo">
           Rain Cloud
         </NavLink>

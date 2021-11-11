@@ -19,7 +19,7 @@ const Sounds = () => {
     <div>
       <div className="sounds">
         {sounds?.map(({ id, name, content, playlistId, file, User }) => (
-          <div>
+          <div key={id}>
             <MediaPlayer file={file} name={name} />
             {sessionUser?.id === User?.id && <DeleteButton id={id} />}
           </div>

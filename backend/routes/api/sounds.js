@@ -64,12 +64,25 @@ router.post(
   })
 );
 
+router.put("/:id(\\d+)", async (req, res, next) => {
+  const sound = await Sound.findByPk(req.params.id);
+  if (sound) {
+    sound.name = req.body.name || sound.name;
+    sound.content = req.body.content || sound.content;
+    sound.file = req.body.file || sound.file;
+
+    await sound.save();
+    res.json({ sound });
+  } else {
+    next(soundNotFoundError(req.params.id));
+  }
+});
+
 router.delete("/:id(\\d+)", async (req, res, next) => {
-  console.log("backend");
   const sound = await Sound.findByPk(req.params.id);
   if (sound) {
     await sound.destroy();
-    res.statusMessage(204).end();
+    res.status(204).end();
   } else {
     next(soundNotFoundError(req.params.id));
   }
