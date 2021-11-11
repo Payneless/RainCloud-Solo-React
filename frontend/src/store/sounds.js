@@ -83,7 +83,8 @@ const soundsReducer = (state = {}, action) => {
       newState = { ...state, [action.payload.id]: action.payload };
       return newState;
     case UPDATE_ONE_SOUND:
-      newState[action.payload.id] = action.payload;
+      newState = { ...state };
+      newState[action.payload.sound.id] = action.payload;
       return newState;
     case REMOVE_ONE_SOUND:
       newState = { ...state };

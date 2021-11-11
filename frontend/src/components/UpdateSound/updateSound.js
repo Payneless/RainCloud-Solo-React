@@ -22,6 +22,7 @@ const UpdateSound = ({ id }) => {
     };
 
     const updatedSound = dispatch(updateOneSound(payload, id));
+    setShowEdit(false);
   };
 
   return (
