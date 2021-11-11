@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { addASound } from "../../store/sounds";
 import { Modal } from "../../context/modal";
 import CreateSound from "./createSound";
 

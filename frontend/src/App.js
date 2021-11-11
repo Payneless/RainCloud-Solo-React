@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import LoginForm from "./components/LoginFormPage";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/session";
-import SignupFormPage from "./components/SignUpFormPage";
 import Navigation from "./components/Navigation";
-import Sounds from "./components/sounds/sounds";
 import Homepage from "./components/homepage/index";
-import useMediaPlayer from "./components/sounds/mediaPlayer";
 
 function App() {
   const dispatch = useDispatch();

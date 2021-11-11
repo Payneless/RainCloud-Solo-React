@@ -1,6 +1,6 @@
 .nav-bar {
   min-height: fit-content;
-  background-color: lightskyblue;
+  background-color: rgb(109, 153, 180);
   display: flex;
   justify-content: center;
   width: auto;
@@ -12,4 +12,5 @@
 .logo {
   text-decoration: none;
   font-family: "Merienda", cursive;
+  color: slategray;
 }

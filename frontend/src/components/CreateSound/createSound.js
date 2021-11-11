@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { addASound } from "../../store/sounds";
 
 const CreateSound = () => {
@@ -10,7 +9,6 @@ const CreateSound = () => {
   const [playlistId, setPlaylistId] = useState(1);
   const [file, setFile] = useState("");
   const [errors, setErrors] = useState([]);
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {

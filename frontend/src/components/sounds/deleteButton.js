@@ -8,8 +8,10 @@ const DeleteButton = ({ id }) => {
     dispatch(deleteSound(id));
   };
   return (
-    <div className="deleteSound-button">
-      <button onClick={() => handleDelete(id)}>Delete</button>
+    <div>
+      <button onClick={() => handleDelete(id)} className="delete-sound">
+        Delete
+      </button>
     </div>
   );
 };

@@ -2,10 +2,40 @@
   height: 20%;
   width: auto;
   display: flex;
+  font-family: "Merienda", cursive;
 }
 .sounds {
   display: flex;
   flex-direction: column;
   width: 30rem;
   overflow-y: scroll;
+}
+.func-buttons {
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+}
+.edit-sound {
+  margin: 0.5rem;
+  width: 100%;
+  height: 50%;
+  background-color: black;
+  place-items: center;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.25rem;
+  border: 0;
+}
+.delete-sound {
+  margin: 0.5rem;
+  width: 100%;
+  height: 50%;
+  background-color: black;
+  place-items: center;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.25rem;
+  border: 0;
 }

@@ -27,7 +27,10 @@ const UpdateSound = ({ id }) => {
 
   return (
     <div>
-      <button onClick={() => setShowEdit(showEdit === true ? false : true)}>
+      <button
+        onClick={() => setShowEdit(showEdit === true ? false : true)}
+        className="edit-sound"
+      >
         Edit
       </button>
       {showEdit && (

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import * as sessionActions from "../../store/session";
 import { getAllSounds } from "../../store/sounds";
 import MediaPlayer from "./mediaPlayer";
 import { Modal } from "../../context/modal";
@@ -16,16 +14,37 @@ const Sounds = () => {
     dispatch(getAllSounds());
   }, [dispatch]);
 
+  const getNewRandomColor = (id) => {
+    let colorArray = [
+      "aqua",
+      "aquamarine",
+      "coral",
+      "cornsilk",
+      "gold",
+      "lavender",
+      "lightcoral",
+      "palegreen",
+      "palevioletred",
+      "peachpuff",
+    ];
+    let randColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+    return randColor;
+  };
+
   return (
     <div>
       <div className="sounds">
         {sounds?.map(({ id, name, content, playlistId, file, User }) => (
-          <div key={id}>
+          <div
+            key={id}
+            className={`media-${id}`}
+            style={{ backgroundColor: getNewRandomColor(id) }}
+          >
             <MediaPlayer file={file} name={name} />
             {sessionUser?.id === User?.id && (
               <div className="func-buttons">
-                <DeleteButton id={id} />
                 <UpdateSound id={id} />
+                <DeleteButton id={id} />
               </div>
             )}
           </div>
