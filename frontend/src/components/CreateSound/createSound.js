@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addASound } from "../../store/sounds";
+import "./createSound.css";
 
-const CreateSound = () => {
+const CreateSound = ({ showModal }) => {
   const userId = useSelector((state) => state.session.user.id);
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
@@ -11,7 +12,8 @@ const CreateSound = () => {
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setErrors([]);
     e.preventDefault();
     const payload = {
       name,
@@ -20,10 +22,13 @@ const CreateSound = () => {
       playlistId,
       file,
     };
-    return dispatch(addASound(payload)).catch(async (res) => {
+    await dispatch(addASound(payload)).catch(async (res) => {
       const soundData = await res.json();
       if (soundData && soundData.errors) setErrors(soundData.errors);
     });
+    if (!errors) {
+      showModal(false);
+    }
   };
 
   return (

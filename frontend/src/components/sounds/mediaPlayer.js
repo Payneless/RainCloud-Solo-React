@@ -15,13 +15,13 @@ const MediaPlayer = ({ file, name }) => {
   // };
   return (
     <div className="media-container">
+      {name}
       <AudioPlayer
         src={file}
         showFilledVolume={true}
         showJumpControls={false}
         autoPlay={false}
       />
-      {name}
     </div>
   );
 };

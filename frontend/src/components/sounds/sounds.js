@@ -33,12 +33,12 @@ const Sounds = () => {
 
   return (
     <div>
-      <div className="sounds">
+      <ul className="sounds">
         {sounds?.map(({ id, name, content, playlistId, file, User }) => (
-          <div
+          <li
             key={id}
             className={`media-${id}`}
-            style={{ backgroundColor: getNewRandomColor(id) }}
+            style={{ backgroundColor: getNewRandomColor(id), margin: "2rem" }}
           >
             <MediaPlayer file={file} name={name} />
             {sessionUser?.id === User?.id && (
@@ -47,9 +47,9 @@ const Sounds = () => {
                 <DeleteButton id={id} />
               </div>
             )}
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
