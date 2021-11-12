@@ -1,2 +1,2 @@
 import { csrfFetch } from "./csrf";
-const getProfile = "/profile/";
+const getProfile = "/profile";
