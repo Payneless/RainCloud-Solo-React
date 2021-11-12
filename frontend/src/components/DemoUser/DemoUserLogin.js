@@ -19,11 +19,9 @@ const DemoUserLogin = () => {
     });
   };
   return (
-    <div>
-      <button type="submit" className="demoUserButton" onClick={handleSubmit}>
-        Demo User
-      </button>
-    </div>
+    <button type="submit" className="demoUserButton" onClick={handleSubmit}>
+      Demo User
+    </button>
   );
 };
 

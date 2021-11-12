@@ -69,3 +69,43 @@
   justify-content: space-between;
   margin: 0 auto;
 }
+.demoUserButton {
+  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgb(238, 238, 238);
+  color: aliceblue;
+  width: 8rem;
+  margin: 1rem;
+  border-radius: 10px;
+}
+.loginbutton {
+  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgb(238, 238, 238);
+  color: aliceblue;
+  margin: 1rem;
+  width: 8rem;
+  border-radius: 10px;
+}
+.signUpButton {
+  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgb(238, 238, 238);
+  color: aliceblue;
+  margin: 1rem;
+  width: 8rem;
+  border-radius: 10px;
+}
+.logged-out-buttons {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 0 auto;
+}

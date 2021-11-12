@@ -21,11 +21,11 @@ const Navigation = ({ isLoaded }) => {
     );
   } else {
     sessionButtons = (
-      <>
+      <div className="logged-out-buttons">
         <LoginFormModal />
         <SignUpFormPageModal />
         <DemoUserLogin />
-      </>
+      </div>
     );
   }
   return (
