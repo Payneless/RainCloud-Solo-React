@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       through: models.Stored,
     });
     Sound.hasMany(models.Comment, {
-      foreignKey: "soundId",
+      foreignKey: "soundId", onDelete: "CASCADE", hooks: true
     });
   };
   return Sound;
