@@ -13,7 +13,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const playlists = await Playlist.findAll({
-      include: User,
+      include: [{ model: User }, { model: Sound }],
       where: {
         userId: id,
       },

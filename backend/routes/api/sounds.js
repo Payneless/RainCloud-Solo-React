@@ -38,7 +38,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const sounds = await Sound.findAll({
       include: User,
-      order: [["updatedAt", "DESC"]],
+      order: [["createdAt", "DESC"]],
       limit: 8,
     });
     res.json(sounds);
