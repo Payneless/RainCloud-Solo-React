@@ -42,7 +42,7 @@ const Sounds = () => {
               boxShadow: "0 0 10px black",
             }}
           >
-            <MediaPlayer file={file} name={name} />
+            <MediaPlayer file={file} name={name} content={content} />
             {sessionUser?.id === User?.id && (
               <div className="func-buttons">
                 <UpdateSound id={id} />

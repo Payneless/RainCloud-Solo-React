@@ -9,19 +9,11 @@ module.exports = {
       Example:
       */
     return queryInterface.bulkInsert(
-      "Playlists",
+      "Storeds",
       [
         {
-          name: "Submissions",
-          content: "The default folder that holds all user submissions.",
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: "Demo Faves",
-          content: "Demo user's favorite sounds!",
-          userId: 1,
+          soundId: 1,
+          playlistId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -37,6 +29,6 @@ module.exports = {
 
       Example:
       */
-    return queryInterface.bulkDelete("Playlists", null, {});
+    return queryInterface.bulkDelete("Storeds", null, {});
   },
 };

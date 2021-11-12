@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import { useHistory, NavLink } from "react-router-dom";
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
+  const RouteChange = (user) => {
+    let id = user.id;
+    let newPath = `/profile/${id}`;
+    let history = useHistory();
+    history.push(newPath);
   };
-
-  useEffect(() => {
-    if (!showMenu) return;
-
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
-
-    document.addEventListener("click", closeMenu);
-
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
 
   const logout = (e) => {
     e.preventDefault();
@@ -29,20 +19,12 @@ const ProfileButton = ({ user }) => {
   };
   return (
     <>
-      <button onClick={openMenu} className="profile-button">
-        <i className="fas fa-id-badge"></i>
+      <NavLink to={`profile/${user.id}`}>
+        <button className="profile-button">Profile</button>
+      </NavLink>
+      <button onClick={logout} className="log-out-button">
+        Log Out
       </button>
-      {showMenu && (
-        <ul className="profile-menu">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout} className="log-out-button">
-              Log Out
-            </button>
-          </li>
-        </ul>
-      )}
     </>
   );
 };

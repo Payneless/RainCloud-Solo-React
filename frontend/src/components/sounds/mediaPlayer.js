@@ -4,7 +4,7 @@ import { getAllSounds } from "../../store/sounds";
 import AudioPlayer from "react-h5-audio-player";
 import "./mediaplayer.css";
 
-const MediaPlayer = ({ file, name }) => {
+const MediaPlayer = ({ file, name, content }) => {
   const dispatch = useDispatch();
   const sounds = useSelector((state) => Object.values(state.sounds));
   useEffect(() => {
@@ -22,6 +22,7 @@ const MediaPlayer = ({ file, name }) => {
         showJumpControls={false}
         autoPlay={false}
       />
+      {content}
     </div>
   );
 };

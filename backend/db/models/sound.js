@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     Sound.belongsTo(models.User, {
       foreignKey: "userId",
     });
-    Sound.belongsTo(models.Playlist, {
-      foreignKey: "playlistId",
+    Sound.belongsToMany(models.Playlist, {
+      through: models.Stored,
     });
     Sound.hasMany(models.Comment, {
       foreignKey: "soundId",

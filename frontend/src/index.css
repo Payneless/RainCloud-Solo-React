@@ -9,7 +9,45 @@
   width: 100%;
 }
 .sidebar {
+  display: flex;
   width: 10rem;
+  background-image: url(https://res.cloudinary.com/rain-cloud/image/upload/v1636743660/ezgif-1-6e0e4ab62745_alpie4.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sidebar-reverse {
+  display: flex;
+  width: 10rem;
+  background-image: url(https://res.cloudinary.com/rain-cloud/image/upload/v1636743660/ezgif-1-6e0e4ab62745_alpie4.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scaleX(-1);
+}
+.footer {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.github {
+  height: 2rem;
+  width: auto;
+  padding: 1rem;
+}
+.linkedin {
+  height: 2rem;
+  width: auto;
+  padding: 1rem;
+}
+.fab {
+  color: rgb(109, 153, 180);
+}
+.site-bio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Merienda", cursive;
 }
 /* .form-page {
   display: flex;
