@@ -5,6 +5,8 @@ import { Modal } from "../../context/modal";
 const UpdateSoundModal = (id) => {
   const [showModal, setShowModal] = useState(false);
 
+  const handleModal = () => setShowModal(false);
+
   return (
     <>
       <button
@@ -14,7 +16,7 @@ const UpdateSoundModal = (id) => {
         Edit
       </button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={handleModal} id={id}>
           <UpdateSound id={id} />
         </Modal>
       )}

@@ -4,7 +4,7 @@ import { getAllSounds } from "../../store/sounds";
 import MediaPlayer from "./mediaPlayer";
 import { Modal } from "../../context/modal";
 import DeleteButton from "./deleteButton";
-import UpdateSound from "../UpdateSound/updateSound";
+import UpdateSoundModal from "../UpdateSound/index";
 
 const Sounds = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -47,12 +47,7 @@ const Sounds = () => {
               <MediaPlayer file={file} name={name} content={content} />
               {sessionUser?.id === User?.id && (
                 <div className="func-buttons">
-                  <UpdateSound
-                    id={id}
-                    name={name}
-                    content={content}
-                    file={file}
-                  />
+                  <UpdateSoundModal id={id} />
                   <DeleteButton id={id} />
                 </div>
               )}
