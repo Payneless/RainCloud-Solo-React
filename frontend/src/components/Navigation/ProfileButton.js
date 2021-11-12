@@ -29,7 +29,7 @@ const ProfileButton = ({ user }) => {
   };
   return (
     <>
-      <button onClick={openMenu}>
+      <button onClick={openMenu} className="profile-button">
         <i className="fas fa-id-badge"></i>
       </button>
       {showMenu && (

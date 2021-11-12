@@ -13,8 +13,9 @@ const Navigation = ({ isLoaded }) => {
   let sessionButtons;
   if (sessionUser) {
     sessionButtons = (
-      <div>
-        <ProfileButton user={sessionUser} /> Welcome, {sessionUser.username}!
+      <div className="logged-in-buttons">
+        <h4>Welcome {sessionUser.username}</h4>
+        <ProfileButton user={sessionUser} />
         <AddSound />
       </div>
     );
@@ -28,11 +29,21 @@ const Navigation = ({ isLoaded }) => {
     );
   }
   return (
-    <ul>
+    <ul className="nav-list">
       <li key="nav-bar" className="nav-tools">
-        <NavLink exact to="/" className="logo">
-          Rain Cloud
-        </NavLink>
+        <div className="main-header">
+          <img
+            className="logo-image"
+            src="https://cdn.discordapp.com/attachments/897232495580414045/906317425425940490/RainCloudLogo.png"
+          />
+          <NavLink exact to="/" className="logo">
+            Rain Cloud
+          </NavLink>
+          <img
+            className="logo-image-reverse"
+            src="https://cdn.discordapp.com/attachments/897232495580414045/906317425425940490/RainCloudLogo.png"
+          />
+        </div>
         {isLoaded && sessionButtons}
       </li>
     </ul>

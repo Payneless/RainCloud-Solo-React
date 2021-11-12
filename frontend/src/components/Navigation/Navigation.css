@@ -5,12 +5,67 @@
   justify-content: center;
   width: auto;
 }
+.main-header {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .nav-tools {
+  display: grid;
   list-style-type: none;
   width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.nav-list {
+  width: 100%;
+  padding: 0;
 }
 .logo {
   text-decoration: none;
   font-family: "Merienda", cursive;
-  color: slategray;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  padding: 2rem;
+}
+.logo-image {
+  height: 5rem;
+  width: auto;
+  transition: all 4s ease;
+}
+.logo-image:hover {
+  transform: scaleX(-1);
+  height: 5rem;
+  width: auto;
+}
+.logo-image-reverse {
+  height: 5rem;
+  width: auto;
+  transform: scaleX(-1);
+  transition: all 4s ease;
+}
+.logo-image-reverse:hover {
+  transform: scaleX(1);
+  height: 5rem;
+  width: auto;
+}
+.profile-button {
+  background-color: rgb(109, 153, 180);
+  outline: none;
+  border: none;
+}
+.add-a-sound-button {
+  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgb(238, 238, 238);
+  color: aliceblue;
+}
+.logged-in-buttons {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
 }

@@ -37,6 +37,9 @@ const Sounds = () => {
               backgroundColor: getNewRandomColor(id),
               margin: "2rem",
               listStyleType: "none",
+              borderRadius: "50px",
+              padding: "1.2rem",
+              boxShadow: "0 0 10px black",
             }}
           >
             <MediaPlayer file={file} name={name} />

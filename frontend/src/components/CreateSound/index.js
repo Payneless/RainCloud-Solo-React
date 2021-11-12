@@ -9,7 +9,7 @@ const AddSound = () => {
   };
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add A Sound</button>
+      <button onClick={() => setShowModal(true)} className="add-a-sound-button">Add A Sound</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateSound showModal={setShowModal} />

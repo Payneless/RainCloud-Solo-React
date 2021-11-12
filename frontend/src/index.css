@@ -1,11 +1,15 @@
 /* TODO Add site wide styles */
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  display: flex;
 }
 .maincontent {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.sidebar {
+  width: 10rem;
 }
 /* .form-page {
   display: flex;
