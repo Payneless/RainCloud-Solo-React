@@ -29,28 +29,35 @@ const Sounds = () => {
   return (
     <div>
       <ul className="sounds">
-        {sounds?.map(({ id, name, content, playlistId, file, User }) => (
-          <li
-            key={id}
-            className={`media-${id}`}
-            style={{
-              backgroundColor: getNewRandomColor(id),
-              margin: "2rem",
-              listStyleType: "none",
-              borderRadius: "50px",
-              padding: "1.2rem",
-              boxShadow: "0 0 10px black",
-            }}
-          >
-            <MediaPlayer file={file} name={name} content={content} />
-            {sessionUser?.id === User?.id && (
-              <div className="func-buttons">
-                <UpdateSound id={id} />
-                <DeleteButton id={id} />
-              </div>
-            )}
-          </li>
-        ))}
+        {sounds
+          ?.reverse()
+          .map(({ id, name, content, playlistId, file, User }) => (
+            <li
+              key={id}
+              className={`media-${id}`}
+              style={{
+                backgroundColor: getNewRandomColor(id),
+                margin: "2rem",
+                listStyleType: "none",
+                borderRadius: "50px",
+                padding: "1.2rem",
+                boxShadow: "0 0 10px black",
+              }}
+            >
+              <MediaPlayer file={file} name={name} content={content} />
+              {sessionUser?.id === User?.id && (
+                <div className="func-buttons">
+                  <UpdateSound
+                    id={id}
+                    name={name}
+                    content={content}
+                    file={file}
+                  />
+                  <DeleteButton id={id} />
+                </div>
+              )}
+            </li>
+          ))}
       </ul>
     </div>
   );
