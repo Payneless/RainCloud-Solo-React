@@ -4,7 +4,7 @@ const { check } = require("express-validator");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, Playlist, Sound } = require("../../db/models");
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const playlists = await Playlist.findAll({
-      include: User,
+      include: [{ model: User }, { model: Sound }],
       where: {
         userId: id,
       },

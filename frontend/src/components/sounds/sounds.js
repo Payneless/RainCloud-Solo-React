@@ -4,7 +4,7 @@ import { getAllSounds } from "../../store/sounds";
 import MediaPlayer from "./mediaPlayer";
 import { Modal } from "../../context/modal";
 import DeleteButton from "./deleteButton";
-import UpdateSound from "../UpdateSound/updateSound";
+import UpdateSoundModal from "../UpdateSound/index";
 
 const Sounds = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -29,28 +29,30 @@ const Sounds = () => {
   return (
     <div>
       <ul className="sounds">
-        {sounds?.map(({ id, name, content, playlistId, file, User }) => (
-          <li
-            key={id}
-            className={`media-${id}`}
-            style={{
-              backgroundColor: getNewRandomColor(id),
-              margin: "2rem",
-              listStyleType: "none",
-              borderRadius: "50px",
-              padding: "1.2rem",
-              boxShadow: "0 0 10px black",
-            }}
-          >
-            <MediaPlayer file={file} name={name} content={content} />
-            {sessionUser?.id === User?.id && (
-              <div className="func-buttons">
-                <UpdateSound id={id} />
-                <DeleteButton id={id} />
-              </div>
-            )}
-          </li>
-        ))}
+        {sounds
+          ?.reverse()
+          .map(({ id, name, content, playlistId, file, User }) => (
+            <li
+              key={id}
+              className={`media-${id}`}
+              style={{
+                backgroundColor: getNewRandomColor(id),
+                margin: "2rem",
+                listStyleType: "none",
+                borderRadius: "50px",
+                padding: "1.2rem",
+                boxShadow: "0 0 10px black",
+              }}
+            >
+              <MediaPlayer file={file} name={name} content={content} />
+              {sessionUser?.id === User?.id && (
+                <div className="func-buttons">
+                  <UpdateSoundModal id={id} />
+                  <DeleteButton id={id} />
+                </div>
+              )}
+            </li>
+          ))}
       </ul>
     </div>
   );

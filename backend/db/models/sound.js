@@ -20,9 +20,13 @@ module.exports = (sequelize, DataTypes) => {
     });
     Sound.belongsToMany(models.Playlist, {
       through: models.Stored,
+      foreignKey: "soundId",
+      otherKey: "playlistId",
     });
     Sound.hasMany(models.Comment, {
       foreignKey: "soundId",
+      onDelete: "CASCADE",
+      hooks: true,
     });
   };
   return Sound;

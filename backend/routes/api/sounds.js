@@ -36,7 +36,11 @@ const validateSound = [
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const sounds = await Sound.findAll({ include: User });
+    const sounds = await Sound.findAll({
+      include: User,
+      order: [["createdAt", "DESC"]],
+      limit: 8,
+    });
     res.json(sounds);
   })
 );
