@@ -25,7 +25,6 @@ const CreateSound = ({ showModal }) => {
     let errs;
     await dispatch(addASound(payload)).catch(async (res) => {
       const soundData = await res.json();
-      console.log("data", soundData.errors);
       if (soundData && soundData.errors) setErrors(soundData.errors);
       errs = soundData.errors;
     });

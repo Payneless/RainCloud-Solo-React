@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     });
     Playlist.belongsToMany(models.Sound, {
       through: models.Stored,
+      foreignKey: "playlistId",
+      otherKey: "soundId",
     });
   };
   return Playlist;

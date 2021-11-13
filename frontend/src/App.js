@@ -5,6 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Homepage from "./components/homepage/index";
 import "./index.css";
+import Profile from "./components/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,9 @@ function App() {
               <Route exact path="/">
                 <Homepage />
               </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
             </Switch>
           </div>
           <div className="sidebar-reverse"></div>
@@ -33,12 +37,12 @@ function App() {
         <footer className="footer">
           <div className="github">
             <NavLink to="https://github.com/Payneless">
-              <i class="fab fa-github fa-2x"></i>
+              <i className="fab fa-github fa-2x"></i>
             </NavLink>
           </div>
           <div className="linkedin">
             <NavLink to="https://www.linkedin.com/in/jake-payne-aba009155/">
-              <i class="fab fa-linkedin-in fa-2x"></i>
+              <i className="fab fa-linkedin-in fa-2x"></i>
             </NavLink>
           </div>
         </footer>

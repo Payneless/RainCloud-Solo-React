@@ -9,14 +9,14 @@ const getPlaylists = (payload) => {
 };
 
 export const getAllPlaylists = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/playlists/${id}`);
+  const response = await csrfFetch(`/api/profile/${id}`);
   if (response.ok) {
     const data = await response.json();
     dispatch(getPlaylists(data));
   }
 };
 
-const profileReducer = (state = {}, action) => {
+const playlistReducer = (state = {}, action) => {
   let newState = {};
   switch (action.type) {
     case GET_PLAYLISTS:
@@ -27,4 +27,4 @@ const profileReducer = (state = {}, action) => {
   }
 };
 
-export default profileReducer;
+export default playlistReducer;
