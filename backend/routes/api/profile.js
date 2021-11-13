@@ -65,6 +65,19 @@ router.post(
   })
 );
 
+router.put("/:id(\\d+)", async (req, res, next) => {
+  const playlist = await Playlist.findByPk(req.params.id);
+  if (playlist) {
+    playlist.name = req.body.name || playlist.name;
+    playlist.content = req.body.content || playlist.content;
+
+    await playlist.save();
+    res.json({ playlist });
+  } else {
+    next(playlistNotFoundError(req.params.id));
+  }
+});
+
 router.delete(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {

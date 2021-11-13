@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 const GET_PLAYLISTS = "/profile/playlists";
 const ADD_PLAYLISTS = "./profile/addplaylist";
+const UPDATE_PLAYLIST = "./profile/updatePlaylist";
 const REMOVE_ONE_PLAYLIST = "./profile/deletePlaylist";
 
 const getPlaylists = (payload) => {
@@ -13,6 +14,13 @@ const getPlaylists = (payload) => {
 const addPlaylist = (payload) => {
   return {
     type: ADD_PLAYLISTS,
+    payload,
+  };
+};
+
+const updatePlaylist = (payload) => {
+  return {
+    type: UPDATE_PLAYLIST,
     payload,
   };
 };
@@ -42,6 +50,18 @@ export const addAPlaylist = (playlist, id) => async (dispatch) => {
   }
 };
 
+export const updateAPlaylist = (playlist) => async (dispatch) => {
+  const response = await csrfFetch(`api/profile/${playlist.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updatePlaylist(data));
+  }
+};
+
 export const deletePlaylist = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/profile/${id}`, {
     method: "DELETE",
@@ -63,6 +83,11 @@ const playlistReducer = (state = {}, action) => {
         ...state,
         [action.payload.newPlaylist.id]: action.payload.newPlaylist,
       };
+      return newState;
+    case UPDATE_PLAYLIST:
+      newState = { ...state };
+      console.log("payload", action.payload);
+      newState[action.payload.playlist.id] = action.payload.playlist;
       return newState;
     case REMOVE_ONE_PLAYLIST:
       newState = { ...state };
