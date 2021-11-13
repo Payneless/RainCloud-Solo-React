@@ -7,9 +7,11 @@ import MediaPlayer from "../sounds/mediaPlayer";
 import CreatePlaylist from "./addPlaylist";
 import { deletePlaylist } from "../../store/profile";
 import "./profile.css";
+import UpdatePlaylist from "./updatePlaylist";
 
 const Profile = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const playlist = useSelector((state) => Object.values(state.playlist));
@@ -49,6 +51,17 @@ const Profile = () => {
           <div key={id}>
             <h4 className="playlist-name">{name}</h4>
             <p className="playlist-content">{content}</p>
+            <button
+              onClick={() => setShowModal1(true)}
+              className="update-a-playlist"
+            >
+              Edit Playlist
+            </button>
+            {showModal1 && (
+              <Modal onClose={() => setShowModal1(false)}>
+                <UpdatePlaylist id={id} setShowModal1={setShowModal1} />
+              </Modal>
+            )}
             <div className="media-container-profile">
               {Sounds?.map(({ id, name, content, playlistId, file, User }) => (
                 <div

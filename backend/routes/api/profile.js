@@ -66,7 +66,11 @@ router.post(
 );
 
 router.put("/:id(\\d+)", async (req, res, next) => {
-  const playlist = await Playlist.findByPk(req.params.id);
+  console.log("WADDDUUPP", req.params.id);
+  const playlist = await Playlist.findByPk(req.params.id, {
+    include: { model: Sound },
+  });
+  console.log("YOOOOOOOOOOOO", playlist);
   if (playlist) {
     playlist.name = req.body.name || playlist.name;
     playlist.content = req.body.content || playlist.content;

@@ -51,10 +51,11 @@ export const addAPlaylist = (playlist, id) => async (dispatch) => {
 };
 
 export const updateAPlaylist = (playlist) => async (dispatch) => {
-  const response = await csrfFetch(`api/profile/${playlist.id}`, {
+  console.log("YOO", playlist.id);
+  const response = await csrfFetch(`/api/profile/${playlist.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(playlist),
   });
   if (response.ok) {
     const data = await response.json();
