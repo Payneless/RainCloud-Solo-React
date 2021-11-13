@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING(255),
       content: DataTypes.TEXT,
       userId: DataTypes.INTEGER,
-      playlistId: DataTypes.INTEGER,
       file: DataTypes.STRING,
     },
     {}

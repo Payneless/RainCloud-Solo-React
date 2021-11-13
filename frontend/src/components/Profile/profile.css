@@ -1,0 +1,25 @@
+.playlists {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.header {
+  display: flex;
+  font-family: "Merienda", cursive;
+  align-items: center;
+}
+.media-container-profile {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  width: 100%;
+}
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}

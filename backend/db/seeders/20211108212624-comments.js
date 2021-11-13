@@ -13,7 +13,7 @@ module.exports = {
       [
         {
           content: "This is so relaxing!",
-          soundsId: 1,
+          soundId: 1,
           userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),

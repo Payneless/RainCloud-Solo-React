@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check, validationResult } = require("express-validator");
-const { User, Sound } = require("../../db/models");
+const { User, Sound, Playlist, Stored } = require("../../db/models");
 
 const { handleValidationErrors } = require("../../utils/validation");
 
@@ -37,7 +37,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const sounds = await Sound.findAll({
-      include: User,
+      include: [User, Playlist],
       order: [["createdAt", "DESC"]],
       limit: 8,
     });
@@ -57,8 +57,11 @@ router.post(
         name,
         content,
         userId,
-        playlistId,
         file,
+      });
+      await Stored.create({
+        soundId: newSound.id,
+        playlistId,
       });
       return res.json({ newSound });
     } else {
@@ -83,9 +86,15 @@ router.put("/:id(\\d+)", async (req, res, next) => {
 });
 
 router.delete("/:id(\\d+)", async (req, res, next) => {
-  const sound = await Sound.findByPk(req.params.id);
+  const sound = await Sound.findByPk(req.params.id, {
+    include: Playlist,
+  });
+  const joinedTable = await Stored.findOne({
+    where: { soundId: sound.id },
+  });
   if (sound) {
     await sound.destroy();
+    await joinedTable.destroy();
     res.status(204).end();
   } else {
     next(soundNotFoundError(req.params.id));

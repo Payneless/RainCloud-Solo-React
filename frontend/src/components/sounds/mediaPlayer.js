@@ -7,9 +7,9 @@ import "./mediaplayer.css";
 const MediaPlayer = ({ file, name, content }) => {
   const dispatch = useDispatch();
   const sounds = useSelector((state) => Object.values(state.sounds));
-  useEffect(() => {
-    dispatch(getAllSounds());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllSounds());
+  // }, [dispatch]);
   // const handleDelete = (id) => {
   //   dispatch(deleteProduct(id));
   // };

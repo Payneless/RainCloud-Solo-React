@@ -5,9 +5,10 @@ import "./createSound.css";
 
 const CreateSound = ({ showModal }) => {
   const userId = useSelector((state) => state.session.user.id);
+  const playlist = useSelector((state) => Object.values(state.playlist));
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
-  const [playlistId, setPlaylistId] = useState(1);
+  const [playlistId, setPlaylistId] = useState(playlist[0].id);
   const [file, setFile] = useState("");
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
@@ -52,6 +53,21 @@ const CreateSound = ({ showModal }) => {
           value={content}
           placeholder="Content"
         />
+        <select
+          onChange={(e) => {
+            console.log("hello", e.target.value);
+            setPlaylistId(e.target.value);
+          }}
+          value={playlistId}
+        >
+          {playlist?.map((onePlaylist, idx) => {
+            return (
+              <option key={idx} value={onePlaylist.id}>
+                {onePlaylist.name}
+              </option>
+            );
+          })}
+        </select>
         <input
           onChange={(e) => setFile(e.target.value)}
           value={file}

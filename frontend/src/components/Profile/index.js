@@ -4,9 +4,11 @@ import { getAllSounds } from "../../store/sounds";
 import { Modal } from "../../context/modal";
 import { getAllPlaylists } from "../../store/profile";
 import MediaPlayer from "../sounds/mediaPlayer";
-import "../sounds/mediaplayer.css";
+import CreatePlaylist from "./addPlaylist";
+import "./profile.css";
 
 const Profile = () => {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const playlist = useSelector((state) => Object.values(state.playlist));
@@ -27,39 +29,44 @@ const Profile = () => {
     );
   };
   return (
-    <>
-      <h4>Hi!</h4>
-      <div>
-        <ul className="playlists">
-          {playlist?.map(({ id, name, content, sounds }) => (
-            <li key={id}>
-              {name}/{content}
-              <ul className="media-container">
-                {sounds?.map(
-                  ({ id, name, content, playlistId, file, User }) => (
-                    <div className={`media=${id}`}>
-                      <li
-                        key={id}
-                        className={`media-${id}`}
-                        style={{
-                          backgroundColor: getNewRandomColor(id),
-                          margin: "2rem",
-                          listStyleType: "none",
-                          borderRadius: "50px",
-                          padding: "1.2rem",
-                          boxShadow: "0 0 10px black",
-                        }}
-                      />
-                      <MediaPlayer file={file} name={name} content={content} />
-                    </div>
-                  )
-                )}
-              </ul>
-            </li>
-          ))}
-        </ul>
+    <div className="main-content">
+      <h3 className="header">My Playlists</h3>
+      <button onClick={() => setShowModal(true)} className="create-a-playlist">
+        Create a Playlist
+      </button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <CreatePlaylist showModal={setShowModal} />
+        </Modal>
+      )}
+      <div className="playlists">
+        {playlist?.map(({ id, name, content, Sounds }) => (
+          <div key={id}>
+            <h4 className="playlist-name">{name}</h4>
+            <p className="playlist-content">{content}</p>
+            <div className="media-container-profile">
+              {Sounds?.map(({ id, name, content, playlistId, file, User }) => (
+                <div
+                  className={`media`}
+                  style={{
+                    backgroundColor: getNewRandomColor(id),
+                    margin: "2rem",
+                    listStyleType: "none",
+                    borderRadius: "50px",
+                    padding: "1.2rem",
+                    boxShadow: "0 0 10px black",
+                    overflow: "hidden",
+                    width: "20vw",
+                  }}
+                >
+                  <MediaPlayer file={file} name={name} content={content} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 

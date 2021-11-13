@@ -22,11 +22,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: "Users" },
       },
-      playlistId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: "Playlists" },
-      },
       file: {
         unique: true,
         allowNull: false,

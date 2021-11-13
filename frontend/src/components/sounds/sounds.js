@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSounds } from "../../store/sounds";
+import { getAllPlaylists } from "../../store/profile";
 import MediaPlayer from "./mediaPlayer";
 import { Modal } from "../../context/modal";
 import DeleteButton from "./deleteButton";
@@ -12,7 +13,7 @@ const Sounds = () => {
   const sounds = useSelector((state) => Object.values(state.sounds));
   useEffect(() => {
     dispatch(getAllSounds());
-  }, [dispatch]);
+  }, []);
 
   const getNewRandomColor = (id) => {
     return (

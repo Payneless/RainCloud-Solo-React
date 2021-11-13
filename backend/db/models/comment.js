@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     "Comment",
     {
       content: DataTypes.STRING,
-      soundsId: DataTypes.INTEGER,
+      soundId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,
     },
     {}
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "userId",
     });
     Comment.belongsTo(models.Sound, {
-      foreignKey: "soundId"
+      foreignKey: "soundId",
     });
   };
   return Comment;

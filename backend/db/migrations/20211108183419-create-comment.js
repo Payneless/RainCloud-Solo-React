@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      soundsId: {
+      soundId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: "Sounds" },
