@@ -4,9 +4,17 @@ const { check, validationResult } = require("express-validator");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { User, Playlist, Sound } = require("../../db/models");
+const { User, Playlist, Sound, Stored } = require("../../db/models");
 
 const router = express.Router();
+
+const playlistNotFoundError = (id) => {
+  const err = Error("Playlist not found");
+  err.errors = [`Playlist with id of ${id} could not be found.`];
+  err.title = "Playlist not found.";
+  err.status = 404;
+  return err;
+};
 //validations
 const validatePlaylist = [
   check("name")
@@ -60,7 +68,17 @@ router.post(
 router.delete(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
-    const response = await Playlist.findByPk();
+    const response = await Playlist.findByPk(req.params.id);
+    const joinedTable = await Stored.findAll({
+      where: { playlistId: response.id },
+    });
+    if (response) {
+      await response.destroy();
+      await joinedTable.forEach((table) => table.destroy());
+      res.status(204).end();
+    } else {
+      next(playlistNotFoundError(req.params.id));
+    }
   })
 );
 

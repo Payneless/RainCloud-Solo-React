@@ -89,12 +89,12 @@ router.delete("/:id(\\d+)", async (req, res, next) => {
   const sound = await Sound.findByPk(req.params.id, {
     include: Playlist,
   });
-  const joinedTable = await Stored.findOne({
+  const joinedTable = await Stored.findAll({
     where: { soundId: sound.id },
   });
   if (sound) {
     await sound.destroy();
-    await joinedTable.destroy();
+    await joinedTable.forEach((table) => table.destroy());
     res.status(204).end();
   } else {
     next(soundNotFoundError(req.params.id));

@@ -5,6 +5,7 @@ import { Modal } from "../../context/modal";
 import { getAllPlaylists } from "../../store/profile";
 import MediaPlayer from "../sounds/mediaPlayer";
 import CreatePlaylist from "./addPlaylist";
+import { deletePlaylist } from "../../store/profile";
 import "./profile.css";
 
 const Profile = () => {
@@ -27,6 +28,10 @@ const Profile = () => {
       (85 + 10 * Math.random()) +
       "%)"
     );
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deletePlaylist(id));
   };
   return (
     <div className="main-content">
@@ -63,6 +68,7 @@ const Profile = () => {
                 </div>
               ))}
             </div>
+            <button onClick={() => handleDelete(id)}>Delete Playlist</button>
           </div>
         ))}
       </div>
