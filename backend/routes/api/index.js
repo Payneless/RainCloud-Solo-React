@@ -2,7 +2,8 @@ const router = require("express").Router();
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const soundsRouter = require("./sounds.js");
-const profileRouter = require("./profile.js")
+const profileRouter = require("./profile.js");
+const storedRouter = require("./stored.js");
 
 router.use("/session", sessionRouter);
 
@@ -11,6 +12,8 @@ router.use("/users", usersRouter);
 router.use("/sounds", soundsRouter);
 
 router.use("/profile", profileRouter);
+
+router.use("/stored", storedRouter);
 
 router.post("/test", (req, res) => {
   res.json({ requestBody: req.body });

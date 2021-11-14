@@ -55,7 +55,6 @@ const CreateSound = ({ showModal }) => {
         />
         <select
           onChange={(e) => {
-            console.log("hello", e.target.value);
             setPlaylistId(e.target.value);
           }}
           value={playlistId}

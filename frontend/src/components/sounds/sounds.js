@@ -6,6 +6,7 @@ import MediaPlayer from "./mediaPlayer";
 import { Modal } from "../../context/modal";
 import DeleteButton from "./deleteButton";
 import UpdateSoundModal from "../UpdateSound/index";
+import AddASoundToPlaylist from "./addToPlaylist";
 
 const Sounds = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -13,6 +14,7 @@ const Sounds = () => {
   const sounds = useSelector((state) => Object.values(state.sounds));
   useEffect(() => {
     dispatch(getAllSounds());
+    dispatch(getAllPlaylists(sessionUser.id));
   }, []);
 
   const getNewRandomColor = (id) => {
@@ -49,6 +51,7 @@ const Sounds = () => {
               {sessionUser?.id === User?.id && (
                 <div className="func-buttons">
                   <UpdateSoundModal id={id} />
+                  <AddASoundToPlaylist soundId={id} />
                   <DeleteButton id={id} />
                 </div>
               )}
