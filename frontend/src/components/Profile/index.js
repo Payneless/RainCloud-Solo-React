@@ -8,6 +8,7 @@ import CreatePlaylist from "./addPlaylist";
 import { deletePlaylist } from "../../store/profile";
 import "./profile.css";
 import UpdatePlaylist from "./updatePlaylist";
+import AddASoundToPlaylist from "../sounds/addToPlaylist";
 
 const Profile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -78,6 +79,7 @@ const Profile = () => {
                   }}
                 >
                   <MediaPlayer file={file} name={name} content={content} />
+                  <AddASoundToPlaylist soundId={id} />
                 </div>
               ))}
             </div>
