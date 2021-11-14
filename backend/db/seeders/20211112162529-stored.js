@@ -29,6 +29,18 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          soundId: 3,
+          playlistId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          soundId: 4,
+          playlistId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

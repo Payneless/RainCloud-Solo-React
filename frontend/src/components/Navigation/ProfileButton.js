@@ -4,18 +4,19 @@ import * as sessionActions from "../../store/session";
 import { useHistory, NavLink } from "react-router-dom";
 
 const ProfileButton = ({ user }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const RouteChange = (user) => {
     let id = user.id;
     let newPath = `/profile/${id}`;
-    let history = useHistory();
     history.push(newPath);
   };
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push("/");
   };
   return (
     <>
