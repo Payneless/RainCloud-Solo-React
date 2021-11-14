@@ -8,7 +8,11 @@ const CreateSound = ({ showModal }) => {
   const playlist = useSelector((state) => Object.values(state.playlist));
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
-  const [playlistId, setPlaylistId] = useState(playlist[0].id);
+  let marker;
+  if (playlist) {
+    marker = playlist[0];
+  }
+  const [playlistId, setPlaylistId] = useState(marker.id);
   const [file, setFile] = useState("");
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
