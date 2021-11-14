@@ -50,6 +50,12 @@
   justify-content: center;
   font-family: "Merienda", cursive;
 }
+.errors-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  z-index: 1001;
+}
 /* .form-page {
   display: flex;
   flex-direction: column;

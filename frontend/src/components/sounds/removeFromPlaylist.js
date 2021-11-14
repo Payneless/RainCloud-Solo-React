@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import { addToPlaylist, deleteFromPlaylist } from "../../store/sounds";
+import { deleteFromPlaylist } from "../../store/profile";
 import { useDispatch, useSelector } from "react-redux";
 
 const RemoveASoundFromPlaylist = ({ playlistId, soundId }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = (playlistId, soundId) => {
+  const handleDelete = (playlistId, soundId, e) => {
+    e.preventDefault();
     dispatch(deleteFromPlaylist(soundId, playlistId));
   };
 
-	return (
-		<button onClick={() => handleDelete(playlistId, soundId)} className="delete-from-playlist">
-			Remove from Playlist
-		</button>
-	)
+  return (
+    <button
+      onClick={(e) => handleDelete(playlistId, soundId, e)}
+      className="delete-from-playlist"
+    >
+      Remove
+    </button>
+  );
 };
 
 export default RemoveASoundFromPlaylist;

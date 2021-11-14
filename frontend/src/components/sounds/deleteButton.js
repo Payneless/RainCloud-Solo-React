@@ -9,7 +9,7 @@ const DeleteButton = ({ id }) => {
   };
   return (
     <div>
-      <button onClick={() => handleDelete(id)} className="delete-sound">
+      <button onClick={() => handleDelete(id)} className="sound-func-button">
         Delete
       </button>
     </div>

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { addToPlaylist } from "../../store/sounds";
+import { addToPlaylist } from "../../store/profile";
 import { useDispatch, useSelector } from "react-redux";
+import RemoveASoundFromPlaylist from "./removeFromPlaylist";
 
-const AddASoundToPlaylist = ({ soundId }) => {
+const AddASoundToPlaylist = ({ soundId, playlistForRemove, classname }) => {
   const playlist = useSelector((state) => Object.values(state.playlist));
   const [playlistId, setPlaylistId] = useState(1);
   const dispatch = useDispatch();
@@ -12,12 +13,13 @@ const AddASoundToPlaylist = ({ soundId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="add-to-playlist">
+    <form onSubmit={handleSubmit} className={classname}>
       <select
         onChange={(e) => {
           setPlaylistId(e.target.value);
         }}
         value={playlistId}
+        className="list-of-playlists"
       >
         {playlist?.map((onePlaylist, idx) => {
           return (
@@ -28,8 +30,12 @@ const AddASoundToPlaylist = ({ soundId }) => {
         })}
       </select>
       <button className="submit-button" type="submit">
-        Add To Playlist
+        Add
       </button>
+      <RemoveASoundFromPlaylist
+        soundId={soundId}
+        playlistId={playlistForRemove}
+      />
     </form>
   );
 };

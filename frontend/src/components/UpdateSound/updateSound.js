@@ -28,12 +28,7 @@ const UpdateSound = ({ id }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="update-sound-form">
-        <ul className="errors-list">
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <h4>Update Sound</h4>
+        <h3>Update Sound</h3>
         <input
           type="text"
           placeholder="name"

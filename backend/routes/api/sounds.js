@@ -53,15 +53,18 @@ router.post(
     const soundErrors = validationResult(req);
 
     if (soundErrors.isEmpty()) {
-      const newSound = await Sound.create({
+      const sound = await Sound.create({
         name,
         content,
         userId,
         file,
       });
       await Stored.create({
-        soundId: newSound.id,
+        soundId: sound.id,
         playlistId,
+      });
+      const newSound = await Sound.findByPk(sound.id, {
+        include: [User, Playlist],
       });
       return res.json({ newSound });
     } else {
@@ -72,7 +75,9 @@ router.post(
 );
 
 router.put("/:id(\\d+)", async (req, res, next) => {
-  const sound = await Sound.findByPk(req.params.id);
+  const sound = await Sound.findByPk(req.params.id, {
+    include: [User, Playlist],
+  });
   if (sound) {
     sound.name = req.body.name || sound.name;
     sound.content = req.body.content || sound.content;

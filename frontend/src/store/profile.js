@@ -3,6 +3,8 @@ const GET_PLAYLISTS = "/profile/playlists";
 const ADD_PLAYLISTS = "./profile/addplaylist";
 const UPDATE_PLAYLIST = "./profile/updatePlaylist";
 const REMOVE_ONE_PLAYLIST = "./profile/deletePlaylist";
+const ADD_TO_PLAYLIST = "sounds/addToPlaylist";
+const REMOVE_FROM_PLAYLIST = "sounds/removeFromPlaylist";
 
 const getPlaylists = (payload) => {
   return {
@@ -30,6 +32,20 @@ const removePlaylist = (id) => {
     payload: id,
   };
 };
+
+const addSoundToPlaylist = (payload) => {
+  return {
+    type: ADD_TO_PLAYLIST,
+    payload,
+  };
+};
+
+const removeFromPlaylist = (payload) => {
+  return {
+    type: REMOVE_FROM_PLAYLIST,
+    payload,
+  };
+};
 export const getAllPlaylists = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/profile/${id}`);
   if (response.ok) {
@@ -51,7 +67,6 @@ export const addAPlaylist = (playlist, id) => async (dispatch) => {
 };
 
 export const updateAPlaylist = (playlist) => async (dispatch) => {
-  console.log("YOO", playlist.id);
   const response = await csrfFetch(`/api/profile/${playlist.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -72,6 +87,30 @@ export const deletePlaylist = (id) => async (dispatch) => {
     dispatch(removePlaylist(id));
   }
 };
+export const addToPlaylist = (soundId, playlistId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/stored/${soundId}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ playlistId }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(addSoundToPlaylist(data));
+  }
+};
+
+export const deleteFromPlaylist = (soundId, playlistId) => async (dispatch) => {
+  const response = await csrfFetch(
+    `/api/stored/${soundId}/playlists/${playlistId}`,
+    {
+      method: "DELETE",
+    }
+  );
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(removeFromPlaylist(data));
+  }
+};
 
 const playlistReducer = (state = {}, action) => {
   let newState = {};
@@ -87,12 +126,22 @@ const playlistReducer = (state = {}, action) => {
       return newState;
     case UPDATE_PLAYLIST:
       newState = { ...state };
-      console.log("payload", action.payload);
       newState[action.payload.playlist.id] = action.payload.playlist;
       return newState;
     case REMOVE_ONE_PLAYLIST:
       newState = { ...state };
       delete newState[action.payload];
+      return newState;
+    case ADD_TO_PLAYLIST:
+      newState = { ...state };
+      newState[action.payload.playlistId].Sounds.push(action.payload.sound);
+      return newState;
+    case REMOVE_FROM_PLAYLIST:
+      newState = { ...state };
+      const soundIdx = newState[action.payload.playlistId].Sounds.findIndex(
+        (sound) => sound.id === action.payload.sound.id
+      );
+      newState[action.payload.playlistId].Sounds.splice(soundIdx, 1);
       return newState;
     default:
       return state;

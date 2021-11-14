@@ -17,7 +17,6 @@ const Profile = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const playlist = useSelector((state) => Object.values(state.playlist));
-  console.log("playlists", playlist);
   useEffect(() => {
     dispatch(getAllPlaylists(sessionUser.id));
   }, [dispatch]);
@@ -52,13 +51,10 @@ const Profile = () => {
       <div className="playlists">
         {playlist?.map(({ id, name, content, Sounds }) => (
           <div key={id}>
-            {(playlistId = id)}
+            <div className="dont-show">{(playlistId = id)}</div>
             <h4 className="playlist-name">{name}</h4>
             <p className="playlist-content">{content}</p>
-            <button
-              onClick={() => setShowModal1(true)}
-              className="update-a-playlist"
-            >
+            <button onClick={() => setShowModal1(true)} className="func-button">
               Edit Playlist
             </button>
             {showModal1 && (
@@ -83,15 +79,21 @@ const Profile = () => {
                   }}
                 >
                   <MediaPlayer file={file} name={name} content={content} />
-                  <AddASoundToPlaylist soundId={id} />
-                  <RemoveASoundFromPlaylist
+                  <AddASoundToPlaylist
+                    soundId={id}
+                    playlistForRemove={playlistId}
+                    classname="add-to-playlist"
+                  />
+                  {/* <RemoveASoundFromPlaylist
                     soundId={id}
                     playlistId={playlistId}
-                  />
+                  /> */}
                 </div>
               ))}
             </div>
-            <button onClick={() => handleDelete(id)}>Delete Playlist</button>
+            <button className="func-button" onClick={() => handleDelete(id)}>
+              Delete Playlist
+            </button>
           </div>
         ))}
       </div>

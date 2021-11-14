@@ -9,10 +9,7 @@ const UpdateSoundModal = ({ id }) => {
 
   return (
     <div>
-      <button
-        onClick={() => setShowModal(true)}
-        className="update-sound-button"
-      >
+      <button onClick={() => setShowModal(true)} className="sound-func-button">
         Edit
       </button>
       {showModal && (
