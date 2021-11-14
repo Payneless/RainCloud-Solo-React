@@ -9,6 +9,7 @@ import { deletePlaylist } from "../../store/profile";
 import "./profile.css";
 import UpdatePlaylist from "./updatePlaylist";
 import AddASoundToPlaylist from "../sounds/addToPlaylist";
+import RemoveASoundFromPlaylist from "../sounds/removeFromPlaylist";
 
 const Profile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -36,6 +37,7 @@ const Profile = () => {
   const handleDelete = (id) => {
     dispatch(deletePlaylist(id));
   };
+  let playlistId;
   return (
     <div className="main-content">
       <h3 className="header">My Playlists</h3>
@@ -50,6 +52,7 @@ const Profile = () => {
       <div className="playlists">
         {playlist?.map(({ id, name, content, Sounds }) => (
           <div key={id}>
+            {(playlistId = id)}
             <h4 className="playlist-name">{name}</h4>
             <p className="playlist-content">{content}</p>
             <button
@@ -64,8 +67,9 @@ const Profile = () => {
               </Modal>
             )}
             <div className="media-container-profile">
-              {Sounds?.map(({ id, name, content, playlistId, file, User }) => (
+              {Sounds?.map(({ id, name, content, file, User }) => (
                 <div
+                  key={id}
                   className={`media`}
                   style={{
                     backgroundColor: getNewRandomColor(id),
@@ -80,6 +84,10 @@ const Profile = () => {
                 >
                   <MediaPlayer file={file} name={name} content={content} />
                   <AddASoundToPlaylist soundId={id} />
+                  <RemoveASoundFromPlaylist
+                    soundId={id}
+                    playlistId={playlistId}
+                  />
                 </div>
               ))}
             </div>

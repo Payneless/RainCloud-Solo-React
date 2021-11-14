@@ -4,6 +4,7 @@ const ADD_SOUND = "/sounds/addSound";
 const REMOVE_ONE_SOUND = "sounds/removeOneSound";
 const UPDATE_ONE_SOUND = "sounds/updateOneSound";
 const ADD_TO_PLAYLIST = "sounds/addToPlaylist";
+const REMOVE_FROM_PLAYLIST = "sounds/removeFromPlaylist";
 
 const getSounds = (payload) => {
   return {
@@ -34,6 +35,13 @@ const addSoundToPlaylist = (payload) => {
   return {
     type: ADD_TO_PLAYLIST,
     payload,
+  };
+};
+
+const removeFromPlaylist = (soundId, playlistId) => {
+  return {
+    type: REMOVE_FROM_PLAYLIST,
+    payload: { soundId, playlistId },
   };
 };
 
@@ -85,11 +93,23 @@ export const addToPlaylist = (soundId, playlistId) => async (dispatch) => {
   const response = await csrfFetch(`/api/stored/${soundId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(playlistId),
+    body: JSON.stringify({ playlistId }),
   });
   if (response.ok) {
     const data = await response.json();
     dispatch(addSoundToPlaylist(data));
+  }
+};
+
+export const deleteFromPlaylist = (soundId, playlistId) => async (dispatch) => {
+  const response = await csrfFetch(
+    `/api/stored/${soundId}/playlists/${playlistId}`,
+    {
+      method: "DELETE",
+    }
+  );
+  if (response.ok) {
+    dispatch(removeFromPlaylist(soundId, playlistId));
   }
 };
 
@@ -111,7 +131,10 @@ const soundsReducer = (state = {}, action) => {
       delete newState[action.payload];
       return newState;
     case ADD_TO_PLAYLIST:
-      newState = { ...state, [action.payload.id]: action.payload };
+      newState = { ...state };
+      return newState;
+    case REMOVE_FROM_PLAYLIST:
+      newState = { ...state };
       return newState;
     default:
       return state;

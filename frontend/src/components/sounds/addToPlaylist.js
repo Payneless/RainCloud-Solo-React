@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const AddASoundToPlaylist = ({ soundId }) => {
   const playlist = useSelector((state) => Object.values(state.playlist));
-  const [playlistId, setPlaylistId] = useState(playlist[0].id);
+  const [playlistId, setPlaylistId] = useState(1);
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
