@@ -2,11 +2,9 @@ import { useDispatch } from "react-redux";
 import { deleteSound } from "../../store/sounds";
 
 const DeleteButton = ({ id }) => {
-  console.log("incomponent", id);
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
-    console.log("idinhandle", id);
     dispatch(deleteSound(id));
   };
   return (
