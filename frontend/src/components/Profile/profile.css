@@ -76,3 +76,35 @@ h4 {
   font-family: "Merienda", cursive;
   padding-left: 2rem;
 }
+.update-playlist-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 0.2rem gray;
+  border-radius: 5%;
+  padding: 1rem;
+  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  background-position: bottom;
+}
+.edit-submit-button {
+  margin: 0.5rem;
+  width: 100%;
+  height: 50%;
+  background-color: black;
+  place-items: center;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.25rem;
+  border: 0;
+}
+.add-playlist-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 0.2rem gray;
+  border-radius: 5%;
+  padding: 1rem;
+  background-image: url(https://acegif.com/wp-content/uploads/rainy-10.gif);
+  background-position: bottom;
+}

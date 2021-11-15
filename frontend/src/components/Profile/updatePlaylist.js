@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateAPlaylist } from "../../store/profile";
 
-const UpdatePlaylist = ({ id, setShowModal1 }) => {
+const UpdatePlaylist = ({ playlistid, setShowModal1 }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
-  const [errors, setErrors] = useState([]);
-
+  const playlist = useSelector((state) => Object.values(state.playlist));
+  const playlistArray = Object.values(playlist);
+  console.log("array", playlistArray);
+  const wantedPlaylist = playlistArray.find(
+    (playlist) => playlist.id === playlistid
+  ).id;
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const payload = {
-      id,
+      wantedPlaylist,
       name,
       content,
     };
@@ -23,12 +26,7 @@ const UpdatePlaylist = ({ id, setShowModal1 }) => {
 
   return (
     <form onSubmit={handleSubmit} className="update-playlist-form">
-      <ul className="errors-list">
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <h4>Update Playlist</h4>
+      <h3>Update Playlist</h3>
       <input
         type="text"
         placeholder="name"
@@ -41,7 +39,9 @@ const UpdatePlaylist = ({ id, setShowModal1 }) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <button type="submit">Update Playlist</button>
+      <button type="submit" className="edit-submit-button">
+        Update Playlist
+      </button>
     </form>
   );
 };

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAPlaylist, getAllPlaylists } from "../../store/profile";
 import { Modal } from "../../context/modal";
 
+
 const CreatePlaylist = ({ showModal }) => {
   const id = useSelector((state) => state.session.user.id);
   const [name, setName] = useState("");

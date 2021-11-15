@@ -54,12 +54,17 @@ const Profile = () => {
             <div className="dont-show">{(playlistId = id)}</div>
             <h4 className="playlist-name">{name}</h4>
             <p className="playlist-content">{content}</p>
-            <button onClick={() => setShowModal1(true)} className="func-button">
+            <button
+              id={id}
+              value={id}
+              onClick={() => setShowModal1(true)}
+              className="func-button"
+            >
               Edit Playlist
             </button>
             {showModal1 && (
               <Modal onClose={() => setShowModal1(false)}>
-                <UpdatePlaylist id={id} setShowModal1={setShowModal1} />
+                <UpdatePlaylist playlistid={id} setShowModal1={setShowModal1} />
               </Modal>
             )}
             <div className="media-container-profile">
