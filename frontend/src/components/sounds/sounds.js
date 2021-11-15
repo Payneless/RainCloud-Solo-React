@@ -13,7 +13,9 @@ const Sounds = () => {
   const sounds = useSelector((state) => Object.values(state.sounds));
   useEffect(() => {
     dispatch(getAllSounds());
-    dispatch(getAllPlaylists(sessionUser?.id));
+    if (sessionUser) {
+      dispatch(getAllPlaylists(sessionUser?.id));
+    }
   }, []);
 
   const getNewRandomColor = (id) => {
