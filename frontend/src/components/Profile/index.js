@@ -87,10 +87,6 @@ const Profile = () => {
                     playlistForRemove={playlistId}
                     classname="add-to-playlist"
                   />
-                  {/* <RemoveASoundFromPlaylist
-                    soundId={id}
-                    playlistId={playlistId}
-                  /> */}
                 </div>
               ))}
             </div>
