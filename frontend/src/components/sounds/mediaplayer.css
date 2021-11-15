@@ -92,6 +92,9 @@
   border-radius: 0.25rem;
   border: 0;
 }
+.delete-from-playlist {
+  font-size: 8pt;
+}
 .rhap_container {
   box-sizing: border-box;
   display: flex;

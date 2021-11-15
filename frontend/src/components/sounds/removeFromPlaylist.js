@@ -15,7 +15,7 @@ const RemoveASoundFromPlaylist = ({ playlistId, soundId }) => {
       onClick={(e) => handleDelete(playlistId, soundId, e)}
       className="delete-from-playlist"
     >
-      Remove
+      Remove from Playlist
     </button>
   );
 };

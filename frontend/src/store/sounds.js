@@ -80,6 +80,7 @@ export const updateOneSound = (payload, id) => async (dispatch) => {
 };
 
 export const deleteSound = (id) => async (dispatch) => {
+  console.log("id", id);
   const response = await csrfFetch(`api/sounds/${id}`, {
     method: "DELETE",
   });
