@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addAPlaylist, getAllPlaylists } from "../../store/profile";
-import { Modal } from "../../context/modal";
-
+import { addAPlaylist } from "../../store/profile";
 
 const CreatePlaylist = ({ showModal }) => {
   const id = useSelector((state) => state.session.user.id);

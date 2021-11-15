@@ -1,5 +1,5 @@
 import UpdateSound from "./updateSound";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Modal } from "../../context/modal";
 
 const UpdateSoundModal = ({ id }) => {

@@ -1,5 +1,5 @@
 import SignUpFormPage from "./signupform";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Modal } from "../../context/modal";
 
 const SignUpModal = () => {

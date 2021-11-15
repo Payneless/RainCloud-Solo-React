@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllSounds } from "../../store/sounds";
 import { Modal } from "../../context/modal";
 import { getAllPlaylists } from "../../store/profile";
 import MediaPlayer from "../sounds/mediaPlayer";
@@ -9,7 +8,6 @@ import { deletePlaylist } from "../../store/profile";
 import "./profile.css";
 import UpdatePlaylist from "./updatePlaylist";
 import AddASoundToPlaylist from "../sounds/addToPlaylist";
-import RemoveASoundFromPlaylist from "../sounds/removeFromPlaylist";
 
 const Profile = () => {
   const [showModal, setShowModal] = useState(false);
@@ -19,7 +17,7 @@ const Profile = () => {
   const playlist = useSelector((state) => Object.values(state.playlist));
   useEffect(() => {
     dispatch(getAllPlaylists(sessionUser.id));
-  }, [dispatch]);
+  }, [dispatch, sessionUser.id]);
 
   const getNewRandomColor = (id) => {
     return (

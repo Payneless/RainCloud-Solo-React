@@ -1,5 +1,5 @@
 import LoginForm from "./LoginForm";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Modal } from "../../context/modal";
 
 const LoginFormModal = () => {

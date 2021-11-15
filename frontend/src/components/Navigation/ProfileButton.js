@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { useHistory, NavLink } from "react-router-dom";
@@ -6,12 +6,6 @@ import { useHistory, NavLink } from "react-router-dom";
 const ProfileButton = ({ user }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const RouteChange = (user) => {
-    let id = user.id;
-    let newPath = `/profile/${id}`;
-    history.push(newPath);
-  };
 
   const logout = (e) => {
     e.preventDefault();

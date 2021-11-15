@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 
 const DemoUserLogin = () => {
-  const [credential, setCredential] = useState("Demo");
-  const [password, setPassword] = useState("password");
+  const [credential] = useState("Demo");
+  const [password] = useState("password");
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -15,7 +14,7 @@ const DemoUserLogin = () => {
       password,
     };
     return dispatch(sessionActions.login(payload)).catch(async (res) => {
-      const loginData = await res.json();
+      await res.json();
     });
   };
   return (

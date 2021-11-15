@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { deleteFromPlaylist } from "../../store/profile";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const RemoveASoundFromPlaylist = ({ playlistId, soundId }) => {
   const dispatch = useDispatch();

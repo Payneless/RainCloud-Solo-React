@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSounds } from "../../store/sounds";
 import { getAllPlaylists } from "../../store/profile";
 import MediaPlayer from "./mediaPlayer";
-import { Modal } from "../../context/modal";
 import DeleteButton from "./deleteButton";
 import UpdateSoundModal from "../UpdateSound/index";
 import AddASoundToPlaylist from "./addToPlaylist";

@@ -8,7 +8,6 @@ const UpdatePlaylist = ({ playlistid, setShowModal1 }) => {
   const [content, setContent] = useState("");
   const playlist = useSelector((state) => Object.values(state.playlist));
   const playlistArray = Object.values(playlist);
-  console.log("array", playlistArray);
   const wantedPlaylist = playlistArray.find(
     (playlist) => playlist.id === playlistid
   ).id;

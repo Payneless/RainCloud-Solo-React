@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { updateOneSound } from "../../store/sounds";
 
 const UpdateSound = ({ id }) => {
@@ -8,8 +7,6 @@ const UpdateSound = ({ id }) => {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
   const [file, setFile] = useState("");
-  const [showEdit, setShowEdit] = useState(false);
-  const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,8 +18,7 @@ const UpdateSound = ({ id }) => {
       file,
     };
 
-    const updatedSound = dispatch(updateOneSound(payload, id));
-    setShowEdit(false);
+    dispatch(updateOneSound(payload, id));
   };
 
   return (

@@ -1,18 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { getAllSounds } from "../../store/sounds";
 import AudioPlayer from "react-h5-audio-player";
 import "./mediaplayer.css";
 
 const MediaPlayer = ({ file, name, content }) => {
-  const dispatch = useDispatch();
-  const sounds = useSelector((state) => Object.values(state.sounds));
-  // useEffect(() => {
-  //   dispatch(getAllSounds());
-  // }, [dispatch]);
-  // const handleDelete = (id) => {
-  //   dispatch(deleteProduct(id));
-  // };
   return (
     <div className="media-container">
       {name}

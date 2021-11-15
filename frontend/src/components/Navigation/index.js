@@ -35,6 +35,7 @@ const Navigation = ({ isLoaded }) => {
           <img
             className="logo-image"
             src="https://cdn.discordapp.com/attachments/897232495580414045/906317425425940490/RainCloudLogo.png"
+            alt="logo"
           />
           <NavLink exact to="/" className="logo">
             Rain Cloud
@@ -42,6 +43,7 @@ const Navigation = ({ isLoaded }) => {
           <img
             className="logo-image-reverse"
             src="https://cdn.discordapp.com/attachments/897232495580414045/906317425425940490/RainCloudLogo.png"
+            alt="logo"
           />
         </div>
         {isLoaded && sessionButtons}
