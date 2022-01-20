@@ -9,23 +9,22 @@ Rain Cloud is a web application modeled after SoundCloud. The main purpose of Ra
 <h2>Features</h2>
 <ul>
   <li>Sounds</li>
+![ezgif-2-39c21b88e6](https://user-images.githubusercontent.com/26901356/150294761-83464696-50a1-435d-acb9-118072a1a06d.gif)
+
+
   <li>Playlists</li>
   <li>User Profile Pages</li>
-  
-</ul>
+![ezgif-2-5a75bae687](https://user-images.githubusercontent.com/26901356/150294765-a24c7fd5-e461-4764-8ca7-49bc86ceefb4.gif)
 
-<h2>Technical Details</h2>
-<ul>
-  <h4>Tech-Stack</h4>
-  <li>JavaScript</li>
-  <li>node.js</li>
-  <li>Sequelize</li>
-  <li>Express.js</li>
-  <li>React JS</li>
-  <li>Redux</li>
-  <li>Faker Api</li>
-  <li>react-h5-audio-player</li>
 </ul>
+## FrontEnd Technologies Used
+
+![image](https://user-images.githubusercontent.com/26901356/147898477-ef3325df-60f3-49e6-b2cd-2af10183ad55.png)
+
+## Backend Technologies Used
+
+![image](https://user-images.githubusercontent.com/26901356/150293787-7a2733f5-b930-42d8-8ab5-5bb7e795863b.png)
+
 
 <h2>Wanna Try it out?</h2>
 <ul>
